@@ -286,3 +286,9 @@ footer {
 .about-section h2, h3 {
   color: #006400;
 }
+
+img{
+    border: none;
+    border-radius: 25px 5px;
+    box-shadow: 2px 2px 7px black;
+}
