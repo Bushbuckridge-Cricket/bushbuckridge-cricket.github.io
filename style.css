@@ -89,11 +89,14 @@ nav ul li a:hover {
   margin-right: auto;
   text-align: center;
 }
-.team-toured img {
+}
+.news-toured img {
   width: 100%;
-  max-width: 300px;
+  max-width: 500px;
   height: auto;
-  margin-bottom: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 }
 .news-item img {
