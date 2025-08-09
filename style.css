@@ -20,14 +20,14 @@ header {
   text-align: center;
 }
 
-header .logo {
+header .official logo {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-header .logo img {
+header .official logo img {
   width: 80px;
   height: auto;
 }
@@ -286,3 +286,4 @@ img {
     height: auto;
   }
 }
+
