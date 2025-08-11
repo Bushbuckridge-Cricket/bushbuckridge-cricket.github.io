@@ -8,21 +8,16 @@
   <meta name="keywords" content="Bushbuckridge, Cricket Club, Lowveld, Fixtures, Team, News, Sports, South Africa" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
-    <style>
-        section {
-            display: none;
-        }
-        section.active {
-            display: block;
-        }
-    </style>
+  <style>
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-   <!-- Cricket Ball Animation -->
-    <img id="cricket-ball" src="fireball.jpg" alt="Cricket ball"
-         style="position: fixed; top: 50%; left: -100px; width: 50px; height: 50px;
-                transform: translateY(-50%) rotate(0deg); display: none; z-index: 1000;" />
   <header>
     <div class="logo">
       <img src="official logo.jpg" alt="Bushbuckridge Cricket Club official logo" />
@@ -185,10 +180,15 @@
     <p>&copy; 2025 Bushbuckridge Cricket Club | All Rights Reserved</p>
     <p>Follow us: <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Facebook</a></p>
   </footer>
- <script src="script.js"></script>
+
+  <script>
+    function showSection(id) {
+      const sections = document.querySelectorAll("main section");
+      sections.forEach(section => section.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
 </body>
 </html>
-
-
 
 
