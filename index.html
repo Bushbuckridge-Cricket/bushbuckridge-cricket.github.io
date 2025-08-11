@@ -14,11 +14,25 @@
       background: linear-gradient(270deg, #b40000, #ff6347, #b40000);
       background-size: 600% 600%;
       animation: backgroundShift 20s ease infinite;
+      margin: 0;
+      font-family: Arial, sans-serif;
     }
     @keyframes backgroundShift {
       0% {background-position: 0% 50%;}
       50% {background-position: 100% 50%;}
       100% {background-position: 0% 50%;}
+    }
+
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+
+    /* Optional: smooth scrolling when section shown */
+    html {
+      scroll-behavior: smooth;
     }
   </style>
 </head>
@@ -30,58 +44,86 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#fixtures">Fixtures</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" onclick="showSection('home')">Home</a></li>
+        <li><a href="#" onclick="showSection('team')">Team</a></li>
+        <li><a href="#" onclick="showSection('fixtures')">Fixtures</a></li>
+        <li><a href="#" onclick="showSection('news')">News</a></li>
+        <li><a href="#" onclick="showSection('about')">About</a></li>
+        <li><a href="#" onclick="showSection('contact')">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <!-- Home Section -->
-    <section id="home" class="hero">
-      <h2>Welcome to Bushbuckridge Cricket Club</h2>
-      <p>Representing the heart of the Lowveld with passion and pride.</p>
+    <section id="home" class="hero active">
+  <h2>Welcome to Bushbuckridge Cricket Club</h2>
+  <p>Representing the heart of the Lowveld with passion and pride.</p>
 
-      <!-- Latest News inside Home section -->
-      <div id="latest-news" class="latest-news">
-        <h2>Latest News</h2>
-        <div class="news-container">
-          <article class="news-item">
-            <img src="t2.jpg" alt="News Image 1" />
-            <h3>🏏League's Update</h3>
-            <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-          </article>
-          <article class="news-item">
-            <img src="young-team.jpg" alt="News Image 2" />
-            <h3>🏏Game Announced</h3>
-            <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-          </article>
-        </div>
-      </div>
-    </section>
+  <!-- Latest News inside Home section -->
+  <div id="latest-news" class="latest-news">
+    <h2>Latest News</h2>
+    <div class="news-container">
+      <article class="news-item">
+        <img src="t2.jpg" alt="News Image 1" />
+        <h3>🏏League's Update</h3>
+        <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
+        <a href="#" onclick="showSection('news')">Read More</a>
+      </article>
+      <article class="news-item">
+        <img src="young-team.jpg" alt="News Image 2" />
+        <h3>🏏Game Announced</h3>
+        <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
+        <a href="#" onclick="showSection('news')">Read More</a>
+      </article>
+    </div>
+  </div>
+</section>
 
     <!-- News Section -->
     <section id="news" class="news-section">
       <h2>Latest News</h2>
       <article class="news-item">
-        <img src="t2.jpg" alt="Girls Under 19 League Start" />
+        <img src="t2.jpg" alt="News 2">
         <h3>🏏League's Update</h3>
         <p><strong>Date:</strong> 29 July 2025</p>
         <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank" rel="noopener noreferrer">Read more on Facebook</a>
+        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
       </article>
       <article class="news-item">
-        <img src="team1.jpg" alt="Under 13 Game Announcement" />
+        <img src="team1.jpg" alt="News 2">
         <h3>🏏Game Announced</h3>
         <p><strong>Date:</strong> 28 July 2025</p>
         <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank" rel="noopener noreferrer">Read more on Facebook</a>
+        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
       </article>
-      <!-- More news articles can be added here -->
+      <article class="news-item">
+        <img src="toured1.jpg" alt="News 3">
+        <h3>Tour To University of Limpopo</h3>
+        <p><strong>Date:</strong> 27 July 2025</p>
+        <p>Our Cricket Boys and Girls from University of Mpumalanga toured to University of Limpopo Sunday 27 July 2025.</p>
+        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a>
+      </article>
+      <article class="news-item">
+        <img src="ack1.jpg" alt="News 4">
+        <h3>🇬🇧 Exhibition Game Hosted British Delegates</h3>
+        <p><strong>Date:</strong> 27 January 2024</p>
+        <p>Bushbuckridge Cricket Club hosted a special exhibition match at Acornhoek with UK delegates.</p>
+        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a>
+      </article>
+      <article class="news-item">
+        <img src="eng1.jpg" alt="News 5">
+        <h3>🏏 Display Game Announced</h3>
+        <p><strong>Date:</strong> Jan 2024</p>
+        <p>A display match with UK delegates at Acornhoek. Players prepared well for the game.</p>
+        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
+      </article>
+      <article class="news-item">
+        <img src="queen.jpg" alt="Queen Hlatshwayo">
+        <h3>🏏 Queen Hlatshwayo Represents Mpumalanga Rhinos</h3>
+        <p><strong>Date:</strong> Dec 2023</p>
+        <p>Our own Queen Hlatshwayo played at the national week in Cape Town.</p>
+        <a href="https://www.facebook.com/100070892319155/posts/pfbid02QUoDAwGc6Db3KEkkfpMXrBnDYQ4ByfwGSSBUCXkzsrzhBNqftb8MNAtbCZ57YJc6l" target="_blank">View on Facebook</a>
+      </article>
     </section>
 
     <!-- Team Section -->
@@ -107,7 +149,7 @@
       <section class="team-videos">
         <h2>🎥 Team Highlights</h2>
         <video controls>
-          <source src="videos/thato.mp4" type="video/mp4" />
+          <source src="videos/thato.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
       </section>
@@ -155,14 +197,23 @@
 
   <footer>
     <p>&copy; 2025 Bushbuckridge Cricket Club | All Rights Reserved</p>
-    <p>Follow us: <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+    <p>Follow us: <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Facebook</a></p>
   </footer>
-
-  <!-- Cricket ball rolling animation element -->
-  <img id="cricket-ball" src="fireball.jpg" alt="Cricket ball" style="position: fixed; top: 50%; left: -100px; width: 50px; height: 50px; transform: translateY(-50%) rotate(0deg); display: none; z-index: 1000;" />
+<!-- Cricket ball rolling animation element -->
+  <img id="cricket-ball" src="images/cricket-ball.png" alt="Cricket ball" 
+       style="position: fixed; top: 50%; left: -100px; width: 50px; height: 50px; 
+       transform: translateY(-50%) rotate(0deg); display: none; z-index: 1000;" />
 
   <script>
     const cricketBall = document.getElementById('cricket-ball');
+
+    function showSection(id) {
+      // Hide all sections
+      const sections = document.querySelectorAll("main section");
+      sections.forEach(section => section.classList.remove("active"));
+      // Show target section
+      document.getElementById(id).classList.add("active");
+    }
 
     function rollCricketBall(targetId) {
       cricketBall.style.display = 'block';
@@ -183,26 +234,25 @@
           requestAnimationFrame(animate);
         } else {
           cricketBall.style.display = 'none';
-
-          // After animation ends, scroll to section smoothly
-          const targetSection = document.getElementById(targetId);
-          if (targetSection) {
-            targetSection.scrollIntoView({ behavior: 'smooth' });
-          }
+          showSection(targetId);
+          // Scroll top after section shown
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }
       animate();
     }
 
-    // Attach click event to nav links
+    // Attach event to nav links
     document.querySelectorAll('nav ul li a').forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', e => {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
+        const targetId = link.getAttribute('data-target');
         rollCricketBall(targetId);
       });
     });
   </script>
+ 
 </body>
 </html>
+
 
