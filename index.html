@@ -8,6 +8,19 @@
   <meta name="keywords" content="Bushbuckridge, Cricket Club, Lowveld, Fixtures, Team, News, Sports, South Africa" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <style>
+    /* Background animation */
+    body {
+      background: linear-gradient(270deg, #b40000, #ff6347, #b40000);
+      background-size: 600% 600%;
+      animation: backgroundShift 20s ease infinite;
+    }
+    @keyframes backgroundShift {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -144,5 +157,51 @@
     <p>&copy; 2025 Bushbuckridge Cricket Club | All Rights Reserved</p>
     <p>Follow us: <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank" rel="noopener noreferrer">Facebook</a></p>
   </footer>
+
+  <!-- Cricket ball rolling animation element -->
+  <img id="cricket-ball" src="images/cricket-ball.png" alt="Cricket ball" style="position: fixed; top: 50%; left: -100px; width: 50px; height: 50px; transform: translateY(-50%) rotate(0deg); display: none; z-index: 1000;" />
+
+  <script>
+    const cricketBall = document.getElementById('cricket-ball');
+
+    function rollCricketBall(targetId) {
+      cricketBall.style.display = 'block';
+      cricketBall.style.left = '-100px';   // start off screen left
+      cricketBall.style.transform = 'translateY(-50%) rotate(0deg)';
+
+      let position = -100;
+      let rotation = 0;
+      const endPosition = window.innerWidth + 100; // offscreen right
+      const speed = 8; // px per frame, adjust to make faster/slower
+
+      function animate() {
+        if (position < endPosition) {
+          position += speed;
+          rotation += 20; // rotate 20 degrees per frame
+          cricketBall.style.left = position + 'px';
+          cricketBall.style.transform = `translateY(-50%) rotate(${rotation}deg)`;
+          requestAnimationFrame(animate);
+        } else {
+          cricketBall.style.display = 'none';
+
+          // After animation ends, scroll to section smoothly
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }
+      animate();
+    }
+
+    // Attach click event to nav links
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        rollCricketBall(targetId);
+      });
+    });
+  </script>
 </body>
 </html>
