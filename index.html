@@ -15,9 +15,15 @@
     section.active {
       display: block;
     }
-    .logo{
+    .logo {
       width: 100px;
       height: 100px;
+    }
+    .news-item {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
     }
   </style>
 </head>
@@ -40,75 +46,79 @@
   </header>
 
   <main>
+    <!-- Home Section -->
     <section id="home" class="hero active">
-  <h2>Welcome to Bushbuckridge Cricket Club</h2>
-  <p>Representing the heart of the Lowveld with passion and pride.</p>
+      <h2>Welcome to Bushbuckridge Cricket Club</h2>
+      <p>Representing the heart of the Lowveld with passion and pride.</p>
 
-  <!-- Latest News inside Home section -->
-  <div id="latest-news" class="latest-news">
-    <h2>Latest News</h2>
-    <div class="news-container">
-      <article class="news-item">
-        <img src="t2.jpg" alt="News Image 1" />
-        <h3>🏏League's Update</h3>
-        <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-        <a href="#" onclick="showSection('news')">Read More</a>
-      </article>
-      <article class="news-item">
-        <img src="young-team.jpg" alt="News Image 2" />
-        <h3>🏏Game Announced</h3>
-        <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-        <a href="#" onclick="showSection('news')">Read More</a>
-      </article>
-    </div>
-  </div>
-</section>
+      <!-- Latest News inside Home section -->
+      <div id="latest-news" class="latest-news">
+        <h2>Latest News</h2>
+        <div class="news-container">
+          <article class="news-item">
+            <img src="t2.jpg" alt="News Image 1" />
+            <h3>🏏 League's Update</h3>
+            <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
+            <a href="#" onclick="showSection('news')">Read More</a>
+          </article>
+          <article class="news-item">
+            <img src="young-team.jpg" alt="News Image 2" />
+            <h3>🏏 Game Announced</h3>
+            <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
+            <a href="#" onclick="showSection('news')">Read More</a>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <!-- News Section -->
     <section id="news" class="news-section">
       <h2>Latest News</h2>
-      <section style="background:#ffe6e6; padding:20px; margin:20px; border-radius:10px;">
-  <h2 style="color:#b30000;">🏏 Latest Match Result</h2>
-  <p><strong>Results to be sent in at the end of each league week by Friday 12:00</strong></p>
-  
-  <h3>Ehlanzeni Primary School Cricket Match Result 2025</h3>
-  <p><strong>Division:</strong> A</p>
-  <p><strong>Age Group:</strong> Under 12 A</p>
-  <p><strong>Fixture:</strong> Home - White River vs Away - BushBuckridge</p>
-  
-  <h4>Team Batting First: White River</h4>
-  <ul>
-    <li>Overs batted: 23</li>
-    <li>Wickets lost: 9</li>
-    <li>Total runs: 134</li>
-  </ul>
-  
-  <h4>Team Batting Second: Bushbuckridge</h4>
-  <ul>
-    <li>Overs batted: 14.1</li>
-    <li>Wickets lost: 3</li>
-    <li>Total runs: 135</li>
-  </ul>
-  
-  <p><strong>Match Result:</strong> Bushbuckridge under 12 won by 7 wickets</p>
-  
-  <h4>Coaches</h4>
-  <ul>
-    <li>Home Team Coach: Molovu PR.</li>
-    <li>Away Team Coach: J. Fouche</li>
-  </ul>
-</section>
 
+      <!-- Match Result Card -->
+      <article class="news-item" style="background:#ffe6e6;">
+        <h3 style="color:#b30000;">🏏 Latest Match Result</h3>
+        <p><strong>Results to be sent in at the end of each league week by Friday 12:00</strong></p>
+
+        <h4>Ehlanzeni Primary School Cricket Match Result 2025</h4>
+        <p><strong>Division:</strong> A</p>
+        <p><strong>Age Group:</strong> Under 12 A</p>
+        <p><strong>Fixture:</strong> Home - White River vs Away - Bushbuckridge</p>
+
+        <h5>Team Batting First: White River</h5>
+        <ul>
+          <li>Overs batted: 23</li>
+          <li>Wickets lost: 9</li>
+          <li>Total runs: 134</li>
+        </ul>
+
+        <h5>Team Batting Second: Bushbuckridge</h5>
+        <ul>
+          <li>Overs batted: 14.1</li>
+          <li>Wickets lost: 3</li>
+          <li>Total runs: 135</li>
+        </ul>
+
+        <p><strong>Match Result:</strong> Bushbuckridge Under 12 won by 7 wickets</p>
+
+        <h5>Coaches</h5>
+        <ul>
+          <li>Home Team Coach: Molovu PR.</li>
+          <li>Away Team Coach: J. Fouche</li>
+        </ul>
+      </article>
+
+      <!-- Other News Items -->
       <article class="news-item">
         <img src="t2.jpg" alt="News 2">
-        <h3>🏏League's Update</h3>
+        <h3>🏏 League's Update</h3>
         <p><strong>Date:</strong> 29 July 2025</p>
         <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
         <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
       </article>
       <article class="news-item">
         <img src="team1.jpg" alt="News 2">
-        <h3>🏏Game Announced</h3>
+        <h3>🏏 Game Announced</h3>
         <p><strong>Date:</strong> 28 July 2025</p>
         <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
         <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
@@ -226,8 +236,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
