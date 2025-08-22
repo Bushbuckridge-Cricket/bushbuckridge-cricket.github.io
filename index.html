@@ -165,6 +165,19 @@
       <button onclick="login()">Login</button>
     </div>
   </div>
+  <!-- Results Section -->
+<section id="results" class="results-section">
+  <h2>Match Results</h2>
+
+  <!-- Login button for Admin -->
+  <div id="admin-login-area">
+    <button onclick="toggleLogin()">Admin Login</button>
+    <div id="login-form" style="display:none; margin-top:10px;">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
 
   <!-- Results List -->
   <div id="results-grid" class="results-grid"></div>
@@ -175,17 +188,21 @@
     <input type="text" id="matchTitle" placeholder="Match Title (e.g. U13 vs White River)" />
     <input type="text" id="matchDate" placeholder="Date (e.g. 14 Aug 2025)" />
     <textarea id="matchSummary" placeholder="Match Summary"></textarea>
+    <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
     <button onclick="addResult()">Add Result</button>
   </div>
 </section>
+
 <script>
+  const API_BASE = "http://localhost:5000/api"; // replace with your live API URL when deployed
+
   // Toggle Login Form
   function toggleLogin() {
     const loginForm = document.getElementById("login-form");
     loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
   }
 
-  // Simple Login (demo only - replace with API later)
+  // Simple Login (demo only - replace with API authentication later)
   function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -199,46 +216,72 @@
     }
   }
 
-  // Add Match Result with player stats
-  function addResult() {
+  // Fetch Match Results from backend API
+  async function fetchResults() {
+    try {
+      const res = await fetch(`${API_BASE}/matches`);
+      const matches = await res.json();
+      const resultsGrid = document.getElementById("results-grid");
+      resultsGrid.innerHTML = "";
+
+      matches.forEach(match => {
+        let playersHTML = "<h4>Player Stats:</h4><ul>";
+        match.players.forEach(p => {
+          playersHTML += `<li>${p.name} - Runs: ${p.runs}, Wickets: ${p.wickets}</li>`;
+        });
+        playersHTML += "</ul>";
+
+        const matchDiv = document.createElement("div");
+        matchDiv.classList.add("news-item");
+        matchDiv.innerHTML = `
+          <h3>${match.title}</h3>
+          <p><strong>Date:</strong> ${new Date(match.date).toLocaleDateString()}</p>
+          <p>${match.summary}</p>
+          ${playersHTML}
+        `;
+        resultsGrid.appendChild(matchDiv);
+      });
+    } catch (err) {
+      console.error("Error fetching match results:", err);
+    }
+  }
+
+  // Add Match Result (Admin)
+  async function addResult() {
     const title = document.getElementById("matchTitle").value;
     const date = document.getElementById("matchDate").value;
     const summary = document.getElementById("matchSummary").value;
-    const playersRaw = document.getElementById("matchPlayers").value; // e.g., "John-45-2,Mike-30-1"
-    
-    // Parse player stats
-    const playersArray = playersRaw.split(",").map(p => {
+    const playersRaw = document.getElementById("matchPlayers").value;
+
+    const players = playersRaw.split(",").map(p => {
       const [name, runs, wickets] = p.split("-");
       return { name: name.trim(), runs: parseInt(runs), wickets: parseInt(wickets) };
     });
 
-    // Build player stats HTML
-    let playersHTML = "<h4>Player Stats:</h4><ul>";
-    playersArray.forEach(player => {
-      playersHTML += `<li>${player.name} - Runs: ${player.runs}, Wickets: ${player.wickets}</li>`;
-    });
-    playersHTML += "</ul>";
+    try {
+      const res = await fetch(`${API_BASE}/matches`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title, date, summary, players })
+      });
+      if (res.ok) {
+        alert("Match result added successfully!");
+        fetchResults(); // refresh results
+      }
+    } catch (err) {
+      console.error("Error adding match result:", err);
+    }
 
-    // Create result card
-    const resultDiv = document.createElement("div");
-    resultDiv.classList.add("news-item");
-    resultDiv.innerHTML = `
-      <h3>${title}</h3>
-      <p><strong>Date:</strong> ${date}</p>
-      <p>${summary}</p>
-      ${playersHTML}
-    `;
-
-    document.getElementById("results-grid").appendChild(resultDiv);
-
-    // Clear inputs
+    // Clear input fields
     document.getElementById("matchTitle").value = "";
     document.getElementById("matchDate").value = "";
     document.getElementById("matchSummary").value = "";
     document.getElementById("matchPlayers").value = "";
   }
-</script>
 
+  // Fetch results on page load
+  fetchResults();
+</script>
     <!-- About Section -->
     <section id="about" class="about-section">
       <h2>About Us</h2>
@@ -283,6 +326,7 @@
   </script>
 </body>
 </html>
+
 
 
 
