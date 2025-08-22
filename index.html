@@ -184,7 +184,7 @@
     <div id="form-container" style="margin-top:10px;"></div>
   </div>
 
-  <!-- Results Grid -->
+  <!-- Results Grid for public -->
   <div id="results-grid" class="results-grid"></div>
 </section>
 
@@ -193,11 +193,13 @@
   let currentType = ""; // player, match, fixture
   let currentAction = ""; // add or edit
 
+  // Toggle admin login form
   function toggleLogin() {
     const loginForm = document.getElementById("login-form");
     loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
   }
 
+  // Admin login
   function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
@@ -206,18 +208,19 @@
       alert("Login successful!");
       document.getElementById("admin-dashboard").style.display = "block";
       document.getElementById("admin-login-area").style.display = "none";
-      fetchResults();
     } else {
       alert("Invalid login details");
     }
   }
 
+  // Show admin options (player, match, fixture)
   function showAdminOptions(type) {
     currentType = type;
     document.getElementById("admin-options").style.display = "block";
     document.getElementById("form-container").innerHTML = "";
   }
 
+  // Show Add/Edit forms dynamically
   function showForm(action) {
     currentAction = action;
     let html = "";
@@ -231,10 +234,7 @@
           <button onclick="addPlayer()">Add Player</button>
         `;
       } else {
-        html = `
-          <h4>Edit Player</h4>
-          <p>(Implement your edit player logic here)</p>
-        `;
+        html = `<h4>Edit Player</h4><p>(Implement your edit player logic here)</p>`;
       }
     } else if(currentType === "match") {
       if(action === "add") {
@@ -247,10 +247,7 @@
           <button onclick="addMatchResult()">Add Match Result</button>
         `;
       } else {
-        html = `
-          <h4>Edit Match Result</h4>
-          <p>(Implement your edit match logic here)</p>
-        `;
+        html = `<h4>Edit Match Result</h4><p>(Implement your edit match logic here)</p>`;
       }
     } else if(currentType === "fixture") {
       if(action === "add") {
@@ -262,17 +259,14 @@
           <button onclick="addFixture()">Add Fixture</button>
         `;
       } else {
-        html = `
-          <h4>Edit Fixture</h4>
-          <p>(Implement your edit fixture logic here)</p>
-        `;
+        html = `<h4>Edit Fixture</h4><p>(Implement your edit fixture logic here)</p>`;
       }
     }
 
     document.getElementById("form-container").innerHTML = html;
   }
 
-  // Fetch Results
+  // Fetch and display results for everyone
   async function fetchResults() {
     try {
       const res = await fetch(`${API_BASE}/matches`);
@@ -339,7 +333,7 @@
       });
       if(res.ok) {
         alert("Match Result added!");
-        fetchResults();
+        fetchResults(); // immediately refresh public results
       }
     } catch(err){console.error(err);}
 
@@ -368,6 +362,9 @@
     document.getElementById("fixtureDate").value="";
     document.getElementById("fixtureVenue").value="";
   }
+
+  // Fetch results on page load for public
+  window.addEventListener("DOMContentLoaded", fetchResults);
 </script>
 
     <!-- About Section -->
@@ -414,5 +411,6 @@
   </script>
 </body>
 </html>
+
 
 
