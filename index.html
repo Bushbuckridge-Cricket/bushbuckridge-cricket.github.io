@@ -169,37 +169,19 @@
   <div id="admin-dashboard" style="display:none; margin-top:20px;">
     <h3>Admin Dashboard</h3>
     <div class="admin-buttons" style="margin-bottom:10px;">
-      <button onclick="showAdminForm('player')">Add Player</button>
-      <button onclick="showAdminForm('match')">Add Match Result</button>
-      <button onclick="showAdminForm('fixture')">Add Fixture</button>
+      <button onclick="showAdminOptions('player')">Player</button>
+      <button onclick="showAdminOptions('match')">Match Result</button>
+      <button onclick="showAdminOptions('fixture')">Fixture</button>
     </div>
 
-    <!-- Player Form -->
-    <div id="form-player" class="admin-form" style="display:none;">
-      <h4>Add Player</h4>
-      <input type="text" id="playerName" placeholder="Player Name" />
-      <input type="text" id="playerTeam" placeholder="Team / Division" />
-      <button onclick="addPlayer()">Add Player</button>
+    <!-- Admin Options (Add/Edit) -->
+    <div id="admin-options" style="display:none; margin-top:10px;">
+      <button onclick="showForm('add')">Add New</button>
+      <button onclick="showForm('edit')">Edit Existing</button>
     </div>
 
-    <!-- Match Form -->
-    <div id="form-match" class="admin-form" style="display:none;">
-      <h4>Add Match Result</h4>
-      <input type="text" id="matchTitle" placeholder="Match Title (e.g. U13 vs White River)" />
-      <input type="text" id="matchDate" placeholder="Date (e.g. 14 Aug 2025)" />
-      <textarea id="matchSummary" placeholder="Match Summary"></textarea>
-      <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
-      <button onclick="addMatchResult()">Add Match Result</button>
-    </div>
-
-    <!-- Fixture Form -->
-    <div id="form-fixture" class="admin-form" style="display:none;">
-      <h4>Add Fixture</h4>
-      <input type="text" id="fixtureTitle" placeholder="Fixture Title (e.g. U15 vs White River)" />
-      <input type="text" id="fixtureDate" placeholder="Date (e.g. 20 Aug 2025)" />
-      <input type="text" id="fixtureVenue" placeholder="Venue" />
-      <button onclick="addFixture()">Add Fixture</button>
-    </div>
+    <!-- Forms -->
+    <div id="form-container" style="margin-top:10px;"></div>
   </div>
 
   <!-- Results Grid -->
@@ -208,6 +190,8 @@
 
 <script>
   const API_BASE = "https://bcc-backend-fhtg.onrender.com/api";
+  let currentType = ""; // player, match, fixture
+  let currentAction = ""; // add or edit
 
   function toggleLogin() {
     const loginForm = document.getElementById("login-form");
@@ -228,12 +212,64 @@
     }
   }
 
-  // Show the proper form in admin dashboard
-  function showAdminForm(formType) {
-    document.querySelectorAll(".admin-form").forEach(f => f.style.display = "none");
-    if(formType === 'player') document.getElementById("form-player").style.display = "block";
-    if(formType === 'match') document.getElementById("form-match").style.display = "block";
-    if(formType === 'fixture') document.getElementById("form-fixture").style.display = "block";
+  function showAdminOptions(type) {
+    currentType = type;
+    document.getElementById("admin-options").style.display = "block";
+    document.getElementById("form-container").innerHTML = "";
+  }
+
+  function showForm(action) {
+    currentAction = action;
+    let html = "";
+
+    if(currentType === "player") {
+      if(action === "add") {
+        html = `
+          <h4>Add Player</h4>
+          <input type="text" id="playerName" placeholder="Player Name" />
+          <input type="text" id="playerTeam" placeholder="Team / Division" />
+          <button onclick="addPlayer()">Add Player</button>
+        `;
+      } else {
+        html = `
+          <h4>Edit Player</h4>
+          <p>(Implement your edit player logic here)</p>
+        `;
+      }
+    } else if(currentType === "match") {
+      if(action === "add") {
+        html = `
+          <h4>Add Match Result</h4>
+          <input type="text" id="matchTitle" placeholder="Match Title" />
+          <input type="text" id="matchDate" placeholder="Date" />
+          <textarea id="matchSummary" placeholder="Match Summary"></textarea>
+          <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
+          <button onclick="addMatchResult()">Add Match Result</button>
+        `;
+      } else {
+        html = `
+          <h4>Edit Match Result</h4>
+          <p>(Implement your edit match logic here)</p>
+        `;
+      }
+    } else if(currentType === "fixture") {
+      if(action === "add") {
+        html = `
+          <h4>Add Fixture</h4>
+          <input type="text" id="fixtureTitle" placeholder="Fixture Title" />
+          <input type="text" id="fixtureDate" placeholder="Date" />
+          <input type="text" id="fixtureVenue" placeholder="Venue" />
+          <button onclick="addFixture()">Add Fixture</button>
+        `;
+      } else {
+        html = `
+          <h4>Edit Fixture</h4>
+          <p>(Implement your edit fixture logic here)</p>
+        `;
+      }
+    }
+
+    document.getElementById("form-container").innerHTML = html;
   }
 
   // Fetch Results
@@ -266,7 +302,7 @@
     }
   }
 
-  // Add Player (POST to backend)
+  // Add Player
   async function addPlayer() {
     const name = document.getElementById("playerName").value;
     const team = document.getElementById("playerTeam").value;
@@ -332,8 +368,8 @@
     document.getElementById("fixtureDate").value="";
     document.getElementById("fixtureVenue").value="";
   }
-
 </script>
+
     <!-- About Section -->
     <section id="about" class="about-section">
       <h2>About Us</h2>
@@ -378,4 +414,5 @@
   </script>
 </body>
 </html>
+
 
