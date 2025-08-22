@@ -153,40 +153,31 @@
     </section>
 
     <!-- Results Section -->
-    <section id="results" class="fixtures">
-      <h2>Match Results</h2>
-      <article class="news-item" style="background:#ffe6e6;">
-        <h3 style="color:#b30000;">🏏 Latest Match Result</h3>
-        <p><strong>Results to be sent in at the end of each league week by Friday 12:00</strong></p>
+<section id="results" class="results-section">
+  <h2>Match Results</h2>
 
-        <h4>Ehlanzeni Primary School Cricket Match Result 2025</h4>
-        <p><strong>Division:</strong> A</p>
-        <p><strong>Age Group:</strong> Under 12 A</p>
-        <p><strong>Fixture:</strong> Home - White River vs Away - Bosbokrant</p>
+  <!-- Login button for Admin -->
+  <div id="admin-login-area">
+    <button onclick="toggleLogin()">Admin Login</button>
+    <div id="login-form" style="display:none; margin-top:10px;">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
+  </div>
 
-        <h5>Team Batting First: White River</h5>
-        <ul>
-          <li>Overs batted: 23</li>
-          <li>Wickets lost: 9</li>
-          <li>Total runs: 134</li>
-        </ul>
+  <!-- Results List -->
+  <div id="results-grid" class="results-grid"></div>
 
-        <h5>Team Batting Second: Bosbokrant</h5>
-        <ul>
-          <li>Overs batted: 14.1</li>
-          <li>Wickets lost: 3</li>
-          <li>Total runs: 135</li>
-        </ul>
-
-        <p><strong>Match Result:</strong> Bosbokrant won by 7 wickets</p>
-
-        <h5>Coaches</h5>
-        <ul>
-          <li>Home Team Coach: Molovu PR.</li>
-          <li>Away Team Coach: J. Fouche</li>
-        </ul>
-      </article>
-    </section>
+  <!-- Admin Panel (hidden until login) -->
+  <div id="admin-panel" style="display:none; margin-top:20px;">
+    <h3>Add New Match Result</h3>
+    <input type="text" id="matchTitle" placeholder="Match Title (e.g. U13 vs White River)" />
+    <input type="text" id="matchDate" placeholder="Date (e.g. 14 Aug 2025)" />
+    <textarea id="matchSummary" placeholder="Match Summary"></textarea>
+    <button onclick="addResult()">Add Result</button>
+  </div>
+</section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
@@ -232,6 +223,7 @@
   </script>
 </body>
 </html>
+
 
 
 
