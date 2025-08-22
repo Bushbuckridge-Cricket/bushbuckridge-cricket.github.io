@@ -164,49 +164,94 @@
       <button onclick="login()">Login</button>
     </div>
   </div>
+<!-- Results Section -->
+<section id="results" class="results-section">
+  <h2>Match Results</h2>
 
-  <!-- Results List -->
-  <div id="results-grid" class="results-grid"></div>
-
-  <!-- Admin Panel (hidden until login) -->
-  <div id="admin-panel" style="display:none; margin-top:20px;">
-    <h3>Add New Match Result</h3>
-    <input type="text" id="matchTitle" placeholder="Match Title (e.g. U13 vs White River)" />
-    <input type="text" id="matchDate" placeholder="Date (e.g. 14 Aug 2025)" />
-    <textarea id="matchSummary" placeholder="Match Summary"></textarea>
-    <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
-    <button onclick="addResult()">Add Result</button>
+  <!-- Admin Login -->
+  <div id="admin-login-area">
+    <button onclick="toggleLogin()">Admin Login</button>
+    <div id="login-form" style="display:none; margin-top:10px;">
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="login()">Login</button>
+    </div>
   </div>
+
+  <!-- Admin Dashboard (hidden until login) -->
+  <div id="admin-dashboard" style="display:none; margin-top:20px;">
+    <h3>Admin Dashboard</h3>
+    <div class="admin-buttons" style="margin-bottom:10px;">
+      <button onclick="showAdminForm('player')">Add Player</button>
+      <button onclick="showAdminForm('match')">Add Match Result</button>
+      <button onclick="showAdminForm('fixture')">Add Fixture</button>
+    </div>
+
+    <!-- Player Form -->
+    <div id="form-player" class="admin-form" style="display:none;">
+      <h4>Add Player</h4>
+      <input type="text" id="playerName" placeholder="Player Name" />
+      <input type="text" id="playerTeam" placeholder="Team / Division" />
+      <button onclick="addPlayer()">Add Player</button>
+    </div>
+
+    <!-- Match Form -->
+    <div id="form-match" class="admin-form" style="display:none;">
+      <h4>Add Match Result</h4>
+      <input type="text" id="matchTitle" placeholder="Match Title (e.g. U13 vs White River)" />
+      <input type="text" id="matchDate" placeholder="Date (e.g. 14 Aug 2025)" />
+      <textarea id="matchSummary" placeholder="Match Summary"></textarea>
+      <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
+      <button onclick="addMatchResult()">Add Match Result</button>
+    </div>
+
+    <!-- Fixture Form -->
+    <div id="form-fixture" class="admin-form" style="display:none;">
+      <h4>Add Fixture</h4>
+      <input type="text" id="fixtureTitle" placeholder="Fixture Title (e.g. U15 vs White River)" />
+      <input type="text" id="fixtureDate" placeholder="Date (e.g. 20 Aug 2025)" />
+      <input type="text" id="fixtureVenue" placeholder="Venue" />
+      <button onclick="addFixture()">Add Fixture</button>
+    </div>
+  </div>
+  <!-- Results Grid -->
+  <div id="results-grid" class="results-grid"></div>
 </section>
 
 <script>
-  // Set your live backend API URL here
-  const API_BASE = "https://bcc-backend-fhtg.onrender.com/api/matches";
+  const API_BASE = "https://bcc-backend-fhtg.onrender.com/api";
 
-  // Toggle Admin Login Form
   function toggleLogin() {
     const loginForm = document.getElementById("login-form");
     loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
   }
 
-  // Admin login (demo)
   function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
     if(username === "admin" && password === "1234") {
       alert("Login successful!");
-      document.getElementById("admin-panel").style.display = "block";
+      document.getElementById("admin-dashboard").style.display = "block";
       document.getElementById("admin-login-area").style.display = "none";
+      fetchResults();
     } else {
       alert("Invalid login details");
     }
   }
 
-  // Fetch Match Results from backend
+  // Show the proper form in admin dashboard
+  function showAdminForm(formType) {
+    document.querySelectorAll(".admin-form").forEach(f => f.style.display = "none");
+    if(formType === 'player') document.getElementById("form-player").style.display = "block";
+    if(formType === 'match') document.getElementById("form-match").style.display = "block";
+    if(formType === 'fixture') document.getElementById("form-fixture").style.display = "block";
+  }
+
+  // Fetch Results
   async function fetchResults() {
     try {
-      const res = await fetch(API_BASE);
+      const res = await fetch(`${API_BASE}/matches`);
       const matches = await res.json();
       const resultsGrid = document.getElementById("results-grid");
       resultsGrid.innerHTML = "";
@@ -229,47 +274,78 @@
         resultsGrid.appendChild(matchDiv);
       });
     } catch (err) {
-      console.error("Error fetching match results:", err);
+      console.error(err);
     }
   }
 
-  // Add Match Result (Admin)
-  async function addResult() {
+  // Add Player (POST to backend)
+  async function addPlayer() {
+    const name = document.getElementById("playerName").value;
+    const team = document.getElementById("playerTeam").value;
+
+    try {
+      const res = await fetch(`${API_BASE}/players`, {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({ name, team })
+      });
+      if(res.ok) alert("Player added!");
+    } catch(err) { console.error(err); }
+
+    document.getElementById("playerName").value = "";
+    document.getElementById("playerTeam").value = "";
+  }
+
+  // Add Match Result
+  async function addMatchResult() {
     const title = document.getElementById("matchTitle").value;
     const date = document.getElementById("matchDate").value;
     const summary = document.getElementById("matchSummary").value;
     const playersRaw = document.getElementById("matchPlayers").value;
-
     const players = playersRaw.split(",").map(p => {
-      const [name, runs, wickets] = p.split("-");
+      const [name,runs,wickets] = p.split("-");
       return { name: name.trim(), runs: parseInt(runs), wickets: parseInt(wickets) };
     });
 
     try {
-      const res = await fetch(API_BASE, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, date, summary, players })
+      const res = await fetch(`${API_BASE}/matches`, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({title,date,summary,players})
       });
       if(res.ok) {
-        alert("Match result added successfully!");
-        fetchResults(); // refresh results
+        alert("Match Result added!");
+        fetchResults();
       }
-    } catch (err) {
-      console.error("Error adding match result:", err);
-    }
+    } catch(err){console.error(err);}
 
-    // Clear input fields
-    document.getElementById("matchTitle").value = "";
-    document.getElementById("matchDate").value = "";
-    document.getElementById("matchSummary").value = "";
-    document.getElementById("matchPlayers").value = "";
+    document.getElementById("matchTitle").value="";
+    document.getElementById("matchDate").value="";
+    document.getElementById("matchSummary").value="";
+    document.getElementById("matchPlayers").value="";
   }
 
-  // Load results on page load
-  fetchResults();
-</script>
+  // Add Fixture
+  async function addFixture() {
+    const title = document.getElementById("fixtureTitle").value;
+    const date = document.getElementById("fixtureDate").value;
+    const venue = document.getElementById("fixtureVenue").value;
 
+    try {
+      const res = await fetch(`${API_BASE}/fixtures`, {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({ title, date, venue })
+      });
+      if(res.ok) alert("Fixture added!");
+    } catch(err){console.error(err);}
+
+    document.getElementById("fixtureTitle").value="";
+    document.getElementById("fixtureDate").value="";
+    document.getElementById("fixtureVenue").value="";
+  }
+
+</script>
     <!-- About Section -->
     <section id="about" class="about-section">
       <h2>About Us</h2>
@@ -314,6 +390,7 @@
   </script>
 </body>
 </html>
+
 
 
 
