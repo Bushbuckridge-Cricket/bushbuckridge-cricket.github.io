@@ -151,21 +151,7 @@
         </div>
       </div>
     </section>
-
-    <!-- Results Section -->
-<section id="results" class="results-section">
-  <h2>Match Results</h2>
-
-  <!-- Login button for Admin -->
-  <div id="admin-login-area">
-    <button onclick="toggleLogin()">Admin Login</button>
-    <div id="login-form" style="display:none; margin-top:10px;">
-      <input type="text" id="username" placeholder="Username" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
-    </div>
-  </div>
-  <!-- Results Section -->
+<!-- Results Section -->
 <section id="results" class="results-section">
   <h2>Match Results</h2>
 
@@ -194,20 +180,21 @@
 </section>
 
 <script>
-  const API_BASE = "http://localhost:5000/api"; // replace with your live API URL when deployed
+  // Set your live backend API URL here
+  const API_BASE = "https://bcc-backend-fhtg.onrender.com/api/matches";
 
-  // Toggle Login Form
+  // Toggle Admin Login Form
   function toggleLogin() {
     const loginForm = document.getElementById("login-form");
     loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
   }
 
-  // Simple Login (demo only - replace with API authentication later)
+  // Admin login (demo)
   function login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    if (username === "admin" && password === "1234") {
+    if(username === "admin" && password === "1234") {
       alert("Login successful!");
       document.getElementById("admin-panel").style.display = "block";
       document.getElementById("admin-login-area").style.display = "none";
@@ -216,10 +203,10 @@
     }
   }
 
-  // Fetch Match Results from backend API
+  // Fetch Match Results from backend
   async function fetchResults() {
     try {
-      const res = await fetch(`${API_BASE}/matches`);
+      const res = await fetch(API_BASE);
       const matches = await res.json();
       const resultsGrid = document.getElementById("results-grid");
       resultsGrid.innerHTML = "";
@@ -259,12 +246,12 @@
     });
 
     try {
-      const res = await fetch(`${API_BASE}/matches`, {
+      const res = await fetch(API_BASE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, date, summary, players })
       });
-      if (res.ok) {
+      if(res.ok) {
         alert("Match result added successfully!");
         fetchResults(); // refresh results
       }
@@ -279,9 +266,10 @@
     document.getElementById("matchPlayers").value = "";
   }
 
-  // Fetch results on page load
+  // Load results on page load
   fetchResults();
 </script>
+
     <!-- About Section -->
     <section id="about" class="about-section">
       <h2>About Us</h2>
@@ -326,6 +314,7 @@
   </script>
 </body>
 </html>
+
 
 
 
