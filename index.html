@@ -269,7 +269,7 @@
   // Fetch and display results for everyone
   async function fetchResults() {
     try {
-      const res = await fetch(`${API_BASE}/matches`);
+      const res = await fetch(`${API_BASE}/match`);
       const matches = await res.json();
       const resultsGrid = document.getElementById("results-grid");
       resultsGrid.innerHTML = "";
@@ -326,7 +326,7 @@
     });
 
     try {
-      const res = await fetch(`${API_BASE}/matches`, {
+      const res = await fetch(`${API_BASE}/match`, {
         method:"POST",
         headers:{"Content-Type":"application/json"},
         body: JSON.stringify({title,date,summary,players})
@@ -411,6 +411,7 @@
   </script>
 </body>
 </html>
+
 
 
 
