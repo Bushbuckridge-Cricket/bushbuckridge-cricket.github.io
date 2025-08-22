@@ -178,7 +178,49 @@
     <button onclick="addResult()">Add Result</button>
   </div>
 </section>
+<script>
+  // Toggle Login Form
+  function toggleLogin() {
+    const loginForm = document.getElementById("login-form");
+    loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+  }
 
+  // Simple Login (demo only - replace with API later)
+  function login() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === "admin" && password === "1234") {
+      alert("Login successful!");
+      document.getElementById("admin-panel").style.display = "block";
+      document.getElementById("admin-login-area").style.display = "none";
+    } else {
+      alert("Invalid login details");
+    }
+  }
+
+  // Add Match Result (demo only - will be connected to API later)
+  function addResult() {
+    const title = document.getElementById("matchTitle").value;
+    const date = document.getElementById("matchDate").value;
+    const summary = document.getElementById("matchSummary").value;
+
+    const resultDiv = document.createElement("div");
+    resultDiv.classList.add("news-item");
+    resultDiv.innerHTML = `
+      <h3>${title}</h3>
+      <p><strong>Date:</strong> ${date}</p>
+      <p>${summary}</p>
+    `;
+
+    document.getElementById("results-grid").appendChild(resultDiv);
+
+    // Clear inputs
+    document.getElementById("matchTitle").value = "";
+    document.getElementById("matchDate").value = "";
+    document.getElementById("matchSummary").value = ""
+       }
+</script>
     <!-- About Section -->
     <section id="about" class="about-section">
       <h2>About Us</h2>
@@ -223,6 +265,7 @@
   </script>
 </body>
 </html>
+
 
 
 
