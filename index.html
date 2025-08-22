@@ -199,18 +199,34 @@
     }
   }
 
-  // Add Match Result (demo only - will be connected to API later)
+  // Add Match Result with player stats
   function addResult() {
     const title = document.getElementById("matchTitle").value;
     const date = document.getElementById("matchDate").value;
     const summary = document.getElementById("matchSummary").value;
+    const playersRaw = document.getElementById("matchPlayers").value; // e.g., "John-45-2,Mike-30-1"
+    
+    // Parse player stats
+    const playersArray = playersRaw.split(",").map(p => {
+      const [name, runs, wickets] = p.split("-");
+      return { name: name.trim(), runs: parseInt(runs), wickets: parseInt(wickets) };
+    });
 
+    // Build player stats HTML
+    let playersHTML = "<h4>Player Stats:</h4><ul>";
+    playersArray.forEach(player => {
+      playersHTML += `<li>${player.name} - Runs: ${player.runs}, Wickets: ${player.wickets}</li>`;
+    });
+    playersHTML += "</ul>";
+
+    // Create result card
     const resultDiv = document.createElement("div");
     resultDiv.classList.add("news-item");
     resultDiv.innerHTML = `
       <h3>${title}</h3>
       <p><strong>Date:</strong> ${date}</p>
       <p>${summary}</p>
+      ${playersHTML}
     `;
 
     document.getElementById("results-grid").appendChild(resultDiv);
@@ -218,9 +234,11 @@
     // Clear inputs
     document.getElementById("matchTitle").value = "";
     document.getElementById("matchDate").value = "";
-    document.getElementById("matchSummary").value = ""
-       }
+    document.getElementById("matchSummary").value = "";
+    document.getElementById("matchPlayers").value = "";
+  }
 </script>
+
     <!-- About Section -->
     <section id="about" class="about-section">
       <h2>About Us</h2>
@@ -265,6 +283,7 @@
   </script>
 </body>
 </html>
+
 
 
 
