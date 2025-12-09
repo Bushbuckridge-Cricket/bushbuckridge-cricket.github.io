@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Match Reports - Bushbuckridge Cricket Club</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ---------- RESET / BASE ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+    a { text-decoration: none; }
+
+    /* ---------- TOP STRIP / SIMPLE HEADER ---------- */
+    .top-strip {
+      background: #b71c1c;
+      color: #fff;
+      padding: 8px 16px;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .top-strip .club-name {
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .top-strip .back-link a {
+      color: #fff;
+      font-size: 13px;
+      text-decoration: underline;
+    }
+
+    /* ---------- HERO / BANNER ---------- */
+    .hero {
+      position: relative;
+      background: url('banner-placeholder.jpg') center/cover no-repeat;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+    }
+    .hero-title {
+      position: relative;
+      color: #fff;
+      font-size: 36px;
+      letter-spacing: 1px;
+    }
+
+    /* ---------- FILTER BAR ---------- */
+    .filters-wrap {
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+    .filters {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 6px;
+      margin-right: auto;
+    }
+    .filter-btn {
+      border: none;
+      border-radius: 16px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      background: #eeeeee;
+      color: #444;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .filter-btn.active {
+      background: #d32f2f;
+      color: #fff;
+    }
+
+    .filter-select {
+      padding: 5px 10px;
+      border-radius: 16px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+      background: #fafafa;
+    }
+
+    /* ---------- MATCHES GRID ---------- */
+    .matches-container {
+      max-width: 1200px;
+      margin: 20px auto 40px;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .match-card {
+      background: #ffffff;
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .match-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: #777;
+    }
+
+    .match-status-pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .status-live    { background: #e53935; }
+    .status-upcoming{ background: #ff9800; }
+    .status-past    { background: #757575; }
+
+    .match-league {
+      color: #b71c1c;
+      font-weight: 600;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    .match-teams {
+      font-weight: 600;
+    }
+
+    .match-score {
+      font-size: 14px;
+      margin-top: 3px;
+    }
+
+    .match-footer {
+      font-size: 11px;
+      color: #777;
+      margin-top: 4px;
+    }
+
+    .match-link {
+      margin-top: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #d32f2f;
+      align-self: flex-start;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 26px;
+      }
+      .filters {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .filter-buttons {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+    }
+
+    /* Simple footer to match your site */
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 13px;
+      color: #666;
+      background: #fafafa;
+      border-top: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar (replace with your full nav if you want) -->
+  <div class="top-strip">
+    <span class="club-name">Bushbuckridge Cricket Club</span>
+    <span class="back-link"><a href="index.html">&larr; Back to main site</a></span>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <h1 class="hero-title">Match Reports</h1>
+  </section>
+
+  <!-- Filters -->
+  <div class="filters-wrap">
+    <div class="filters">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-status="all">Show All</button>
+        <button class="filter-btn" data-status="live">Live</button>
+        <button class="filter-btn" data-status="upcoming">Upcoming</button>
+        <button class="filter-btn" data-status="past">Past</button>
+      </div>
+
+      <select id="seasonFilter" class="filter-select">
+        <option value="all">All Seasons</option>
+        <option value="2025-26">2025-26</option>
+        <option value="2024-25">2024-25</option>
+      </select>
+
+      <select id="tournamentFilter" class="filter-select">
+        <option value="all">All Tournaments</option>
+        <option value="Ehlanzeni League">Ehlanzeni League</option>
+        <option value="Friendly">Friendly</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Matches grid -->
+  <main class="matches-container" id="matchesContainer">
+    <!-- Example LIVE match -->
+    <article class="match-card"
+             data-status="live"
+             data-season="2025-26"
+             data-tournament="Ehlanzeni League">
+      <div class="match-top-row">
+        <span class="match-league">2025-26 Ehlanzeni League</span>
+        <span class="match-status-pill status-live">Live</span>
+      </div>
+      <div class="match-top-row">
+        <span>14 August 2025, 14:00</span>
+        <span>U/13</span>
+      </div>
+      <div class="match-teams">Bushbuckridge U/13 vs White River U/13</div>
+      <div class="match-score">Bushbuckridge U/13 135/3 (14.1 ov) – chasing 134/9</div>
+      <div class="match-footer">Venue: White River | U/13 League</div>
+      <a href="#u13-2025-08-14" class="match-link">View report</a>
+    </article>
+
+    <!-- Example UPCOMING match -->
+    <article class="match-card"
+             data-status="upcoming"
+             data-season="2025-26"
+             data-tournament="Ehlanzeni League">
+      <div class="match-top-row">
+        <span class="match-league">2025-26 Ehlanzeni League</span>
+        <span class="match-status-pill status-upcoming">Upcoming</span>
+      </div>
+      <div class="match-top-row">
+        <span>31 July 2025, 10:00</span>
+        <span>U/13</span>
+      </div>
+      <div class="match-teams">Bushbuckridge U/13 vs Barberton Laer Skool</div>
+      <div class="match-score">Match yet to start</div>
+      <div class="match-footer">Venue: Barberton | League fixture</div>
+      <a href="#u13-2025-07-31" class="match-link">Match details</a>
+    </article>
+
+    <!-- Example PAST match -->
+    <article class="match-card"
+             data-status="past"
+             data-season="2024-25"
+             data-tournament="Friendly">
+      <div class="match-top-row">
+        <span class="match-league">Friendly</span>
+        <span class="match-status-pill status-past">Completed</span>
+      </div>
+      <div class="match-top-row">
+        <span>27 January 2024, 15:00</span>
+        <span>Senior</span>
+      </div>
+      <div class="match-teams">Bushbuckridge XI vs UK Delegates XI</div>
+      <div class="match-score">Exhibition game – scores not recorded</div>
+      <div class="match-footer">Venue: Acornhoek | Exhibition</div>
+      <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank" class="match-link">
+        View photos on Facebook
+      </a>
+    </article>
+
+    <!-- Add more <article class="match-card"> blocks as needed -->
+  </main>
+
+  <footer>
+    &copy; 2025 Bushbuckridge Cricket Club | All Rights Reserved
+  </footer>
+
+  <script>
+    // --------- FILTER LOGIC ---------
+    const statusButtons = document.querySelectorAll('.filter-btn');
+    const seasonFilter  = document.getElementById('seasonFilter');
+    const tournFilter   = document.getElementById('tournamentFilter');
+    const cards         = document.querySelectorAll('.match-card');
+
+    let currentStatus = 'all';
+
+    statusButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        statusButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentStatus = btn.getAttribute('data-status');
+        applyFilters();
+      });
+    });
+
+    seasonFilter.addEventListener('change', applyFilters);
+    tournFilter.addEventListener('change', applyFilters);
+
+    function applyFilters() {
+      const seasonVal = seasonFilter.value;
+      const tournVal  = tournFilter.value;
+
+      cards.forEach(card => {
+        const cardStatus = card.getAttribute('data-status');
+        const cardSeason = card.getAttribute('data-season');
+        const cardTourn  = card.getAttribute('data-tournament');
+
+        const statusOk = (currentStatus === 'all' || currentStatus === cardStatus);
+        const seasonOk = (seasonVal === 'all' || seasonVal === cardSeason);
+        const tournOk  = (tournVal  === 'all' || tournVal  === cardTourn);
+
+        card.style.display = (statusOk && seasonOk && tournOk) ? 'flex' : 'none';
+      });
+    }
+
+    // Initial filter
+    applyFilters();
+  </script>
+</body>
+</html>
