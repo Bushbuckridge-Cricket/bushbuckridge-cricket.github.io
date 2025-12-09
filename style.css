@@ -10,9 +10,6 @@ body {
   background-color: #ffffff;
   color: #333;
   line-height: 1.6;
-}
-body {
-  /* existing styles... */
   background: linear-gradient(270deg, #b40000, #ff6347, #b40000);
   background-size: 600% 600%;
   animation: backgroundShift 20s ease infinite;
@@ -30,16 +27,17 @@ header {
   color: white;
   padding: 20px;
   text-align: center;
+  position: relative;
 }
 
-header .official logo {
+header .official-logo {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
 }
 
-header .official logo img {
+header .official-logo img {
   width: 80px;
   height: auto;
 }
@@ -47,6 +45,24 @@ header .official logo img {
 /* Navigation */
 nav {
   margin-top: 15px;
+  position: relative;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+  display: none;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.menu-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 nav ul {
@@ -57,14 +73,65 @@ nav ul {
   gap: 15px;
 }
 
+nav ul li {
+  position: relative;
+}
+
 nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding: 10px 15px;
+  display: block;
+  transition: background-color 0.3s ease;
 }
 
 nav ul li a:hover {
-  text-decoration: underline;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* Dropdown Menu Styles */
+nav ul li .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #900000;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  border-radius: 5px;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+nav ul li:hover .dropdown {
+  display: block;
+}
+
+nav ul li .dropdown li {
+  width: 100%;
+}
+
+nav ul li .dropdown li a {
+  padding: 12px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav ul li .dropdown li:last-child a {
+  border-bottom: none;
+}
+
+nav ul li .dropdown li a:hover {
+  background-color: #b40000;
+  border-radius: 0;
+}
+
+/* Dropdown indicator (arrow) */
+nav ul li.has-dropdown > a::after {
+  content: ' ▼';
+  font-size: 10px;
+  margin-left: 5px;
 }
 
 /* Hero */
@@ -78,6 +145,7 @@ nav ul li a:hover {
   color: #b40000;
   margin-bottom: 10px;
 }
+
 /* Adjust images in Home's Latest News section */
 #home .latest-news {
   margin-top: 40px;
@@ -107,8 +175,6 @@ nav ul li a:hover {
   border-radius: 8px;
   margin-bottom: 10px;
 }
-
-
 
 /* News Section Container */
 .news-section {
@@ -278,14 +344,71 @@ img {
   box-shadow: 2px 2px 7px black;
 }
 
+.cricket-ball {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, white 60%, red 100%);
+  border-radius: 50%;
+  position: fixed;
+  top: 50%;
+  left: -50px;
+  transform: translateY(-50%);
+  display: none;
+  z-index: 9999;
+}
+
 /* Responsive Media Queries */
 @media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
+  /* Show mobile menu toggle */
+  .menu-toggle {
+    display: block;
   }
 
-  header .logo img {
+  /* Hide menu by default on mobile */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #900000;
+    padding: 20px 0;
+    border-radius: 5px;
+    margin-top: 15px;
+  }
+
+  /* Show menu when active class is added */
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+  }
+
+  nav ul li a {
+    padding: 15px 20px;
+    width: 100%;
+  }
+
+  /* Dropdown adjustments for mobile */
+  nav ul li .dropdown {
+    position: static;
+    display: none;
+    background-color: #800000;
+    box-shadow: none;
+    margin-top: 0;
+  }
+
+  nav ul li.dropdown-open .dropdown {
+    display: block;
+  }
+
+  nav ul li:hover .dropdown {
+    display: none;
+  }
+
+  header .official-logo img {
     width: 60px;
   }
 
@@ -298,19 +421,3 @@ img {
     height: auto;
   }
 }
-.cricket-ball {
-    width: 40px;
-    height: 40px;
-    background: radial-gradient(circle, white 60%, red 100%);
-    border-radius: 50%;
-    position: fixed;
-    top: 50%;
-    left: -50px;
-    transform: translateY(-50%);
-    display: none;
-    z-index: 9999;
-}
-
-
-
-
