@@ -223,23 +223,56 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-      <h2>Contact Us</h2>
-      <div class="contact-details">
-        <p><strong>Email:</strong> bushbuckridgecricket@gmail.com</p>
-        <p><strong>Phone:</strong> +27 79 798 4487</p>
-        <p><strong>Address:</strong> Tamajane Sec School, Hazyview, South Africa</p>
-      </div>
-      <form action="#" method="post" class="contact-form">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" name="name" required />
-        <label for="email">Your Email</label>
-        <input type="email" id="email" name="email" required />
-        <label for="message">Your Message</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </section>
+   <!-- Contact Section -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+
+  <div class="contact-layout">
+    <!-- Left column: address and details -->
+    <div class="contact-info">
+      <h3>BUSHBUCKRIDGE CRICKET DEVELOPMENT CLUB</h3>
+
+      <p><strong>Address:</strong><br>
+        Tamajane Senior Secondary School<br>
+        Tekamahala Trust, Hazyview, 1242<br>
+        PO Box 955, Hazyview, 1242
+      </p>
+
+      <p><strong>Telephone:</strong><br>
+        +27 76 881 2006 / +27 71 152 0881
+      </p>
+
+      <p><strong>E-mail:</strong><br>
+        <a href="mailto:bushbuckridgedevelopmentcricke@gmail.com">
+          bushbuckridgedevelopmentcricke@gmail.com
+        </a>
+      </p>
+    </div>
+
+    <!-- Right column: map -->
+    <div class="contact-map">
+      <h3>Location on Map</h3>
+      <iframe
+        width="100%"
+        height="250"
+        style="border:0"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed/v1/view?key=YOUR_API_KEY&center=24.953696,31.198126&zoom=15">
+      </iframe>
+      <!-- If you don't have a Maps API key, use the simple link below instead of the iframe -->
+      <!--
+      <p>
+        <a href="https://www.google.com/maps?q=24.953696,31.198126" target="_blank">
+          View larger map
+        </a>
+      </p>
+      -->
+    </div>
+  </div>
+</section>
+
   </main>
 
   <footer>
@@ -461,5 +494,6 @@
   </script>
 </body>
 </html>
+
 
 
