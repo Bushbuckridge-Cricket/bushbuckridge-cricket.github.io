@@ -31,11 +31,29 @@
       <h1>Bushbuckridge Cricket Club</h1>
     </div>
     <nav>
-      <ul>
+      <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
+      <ul id="navMenu">
         <li><a href="#" onclick="showSection('home')">Home</a></li>
-        <li><a href="#" onclick="showSection('team')">Team</a></li>
+        
+        <li class="has-dropdown">
+          <a href="#" onclick="handleNavClick(event, 'team')">Team</a>
+          <ul class="dropdown">
+            <li><a href="#" onclick="showSection('team')">Team Overview</a></li>
+            <li><a href="#" onclick="showSection('team')">Players</a></li>
+            <li><a href="#" onclick="showSection('team')">Coaches</a></li>
+          </ul>
+        </li>
+        
+        <li class="has-dropdown">
+          <a href="#" onclick="handleNavClick(event, 'news')">News</a>
+          <ul class="dropdown">
+            <li><a href="#" onclick="showSection('news')">Latest News</a></li>
+            <li><a href="#" onclick="showSection('news')">Match Reports</a></li>
+            <li><a href="#" onclick="showSection('news')">Announcements</a></li>
+          </ul>
+        </li>
+        
         <li><a href="#" onclick="showSection('results')">Results</a></li>
-        <li><a href="#" onclick="showSection('news')">News</a></li>
         <li><a href="#" onclick="showSection('about')">About</a></li>
         <li><a href="#" onclick="showSection('contact')">Contact</a></li>
       </ul>
@@ -104,28 +122,32 @@
         <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
         <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
       </article>
-      <!-- You can keep adding more news articles here -->
-      </article> <article class="news-item"> <img src="toured1.jpg" alt="News 3"> 
+      <article class="news-item"> 
+        <img src="toured1.jpg" alt="News 3"> 
         <h3>Tour To University of Limpopo</h3> 
         <p><strong>Date:</strong> 27 July 2025</p> 
         <p>Our Cricket Boys and Girls from University of Mpumalanga toured to University of Limpopo Sunday 27 July 2025.</p>
         <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a> 
-      </article> <article class="news-item">
+      </article>
+      <article class="news-item">
         <img src="ack1.jpg" alt="News 4">
         <h3>🇬🇧 Exhibition Game Hosted British Delegates</h3>
         <p><strong>Date:</strong> 27 January 2024</p>
         <p>Bushbuckridge Cricket Club hosted a special exhibition match at Acornhoek with UK delegates.</p> 
         <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a>
-      </article> <article class="news-item"> 
+      </article>
+      <article class="news-item"> 
         <img src="eng1.jpg" alt="News 5"> 
         <h3>🏏 Display Game Announced</h3>
         <p><strong>Date:</strong> Jan 2024</p> 
         <p>A display match with UK delegates at Acornhoek. Players prepared well for the game.</p>
         <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
-      </article> <article class="news-item"> 
+      </article>
+      <article class="news-item"> 
         <img src="queen.jpg" alt="Queen Hlatshwayo"> 
         <h3>🏏 Queen Hlatshwayo Represents Mpumalanga Rhinos</h3> 
-        <p><strong>Date:</strong> Dec 2023</p> <p>Our own Queen Hlatshwayo played at the national week in Cape Town.</p>
+        <p><strong>Date:</strong> Dec 2023</p>
+        <p>Our own Queen Hlatshwayo played at the national week in Cape Town.</p>
         <a href="https://www.facebook.com/100070892319155/posts/pfbid02QUoDAwGc6Db3KEkkfpMXrBnDYQ4ByfwGSSBUCXkzsrzhBNqftb8MNAtbCZ57YJc6l" target="_blank">View on Facebook</a>
       </article> 
     </section>
@@ -151,221 +173,43 @@
         </div>
       </div>
     </section>
-<!-- Results Section -->
-<section id="results" class="results-section">
-  <h2>Match Results</h2>
 
-  <!-- Admin Login -->
-  <div id="admin-login-area">
-    <button onclick="toggleLogin()">Admin Login</button>
-    <div id="login-form" style="display:none; margin-top:10px;">
-      <input type="text" id="username" placeholder="Username" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
-    </div>
-  </div>
+    <!-- Results Section -->
+    <section id="results" class="results-section">
+      <h2>Match Results</h2>
 
-  <!-- Admin Dashboard (hidden until login) -->
-  <div id="admin-dashboard" style="display:none; margin-top:20px;">
-    <h3>Admin Dashboard</h3>
-    <div class="admin-buttons" style="margin-bottom:10px;">
-      <button onclick="showAdminOptions('player')">Player</button>
-      <button onclick="showAdminOptions('match')">Match Result</button>
-      <button onclick="showAdminOptions('fixture')">Fixture</button>
-    </div>
+      <!-- Admin Login -->
+      <div id="admin-login-area">
+        <button onclick="toggleLogin()">Admin Login</button>
+        <div id="login-form" style="display:none; margin-top:10px;">
+          <input type="text" id="username" placeholder="Username" />
+          <input type="password" id="password" placeholder="Password" />
+          <button onclick="login()">Login</button>
+        </div>
+      </div>
 
-    <!-- Admin Options (Add/Edit) -->
-    <div id="admin-options" style="display:none; margin-top:10px;">
-      <button onclick="showForm('add')">Add New</button>
-      <button onclick="showForm('edit')">Edit Existing</button>
-    </div>
+      <!-- Admin Dashboard (hidden until login) -->
+      <div id="admin-dashboard" style="display:none; margin-top:20px;">
+        <h3>Admin Dashboard</h3>
+        <div class="admin-buttons" style="margin-bottom:10px;">
+          <button onclick="showAdminOptions('player')">Player</button>
+          <button onclick="showAdminOptions('match')">Match Result</button>
+          <button onclick="showAdminOptions('fixture')">Fixture</button>
+        </div>
 
-    <!-- Forms -->
-    <div id="form-container" style="margin-top:10px;"></div>
-  </div>
+        <!-- Admin Options (Add/Edit) -->
+        <div id="admin-options" style="display:none; margin-top:10px;">
+          <button onclick="showForm('add')">Add New</button>
+          <button onclick="showForm('edit')">Edit Existing</button>
+        </div>
 
-  <!-- Results Grid for public -->
-  <div id="results-grid" class="results-grid"></div>
-</section>
+        <!-- Forms -->
+        <div id="form-container" style="margin-top:10px;"></div>
+      </div>
 
-<script>
-  const API_BASE = "https://bcc-backend-fhtg.onrender.com";
-  let currentType = ""; // player, match, fixture
-  let currentAction = ""; // add or edit
-
-  // Toggle admin login form
-  function toggleLogin() {
-    const loginForm = document.getElementById("login-form");
-    loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
-  }
-
-  // Admin login
-  function login() {
-    const username = document.getElementById("username").value;
-    const password = document.getElementById("password").value;
-
-    if(username === "admin" && password === "1234") {
-      alert("Login successful!");
-      document.getElementById("admin-dashboard").style.display = "block";
-      document.getElementById("admin-login-area").style.display = "none";
-    } else {
-      alert("Invalid login details");
-    }
-  }
-
-  // Show admin options (player, match, fixture)
-  function showAdminOptions(type) {
-    currentType = type;
-    document.getElementById("admin-options").style.display = "block";
-    document.getElementById("form-container").innerHTML = "";
-  }
-
-  // Show Add/Edit forms dynamically
-  function showForm(action) {
-    currentAction = action;
-    let html = "";
-
-    if(currentType === "player") {
-      if(action === "add") {
-        html = `
-          <h4>Add Player</h4>
-          <input type="text" id="playerName" placeholder="Player Name" />
-          <input type="text" id="playerTeam" placeholder="Team / Division" />
-          <button onclick="addPlayer()">Add Player</button>
-        `;
-      } else {
-        html = `<h4>Edit Player</h4><p>(Implement your edit player logic here)</p>`;
-      }
-    } else if(currentType === "match") {
-      if(action === "add") {
-        html = `
-          <h4>Add Match Result</h4>
-          <input type="text" id="matchTitle" placeholder="Match Title" />
-          <input type="text" id="matchDate" placeholder="Date" />
-          <textarea id="matchSummary" placeholder="Match Summary"></textarea>
-          <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
-          <button onclick="addMatchResult()">Add Match Result</button>
-        `;
-      } else {
-        html = `<h4>Edit Match Result</h4><p>(Implement your edit match logic here)</p>`;
-      }
-    } else if(currentType === "fixture") {
-      if(action === "add") {
-        html = `
-          <h4>Add Fixture</h4>
-          <input type="text" id="fixtureTitle" placeholder="Fixture Title" />
-          <input type="text" id="fixtureDate" placeholder="Date" />
-          <input type="text" id="fixtureVenue" placeholder="Venue" />
-          <button onclick="addFixture()">Add Fixture</button>
-        `;
-      } else {
-        html = `<h4>Edit Fixture</h4><p>(Implement your edit fixture logic here)</p>`;
-      }
-    }
-
-    document.getElementById("form-container").innerHTML = html;
-  }
-
-  // Fetch and display results for everyone
-  async function fetchResults() {
-    try {
-      const res = await fetch(`${API_BASE}/match`);
-      const matches = await res.json();
-      const resultsGrid = document.getElementById("results-grid");
-      resultsGrid.innerHTML = "";
-
-      matches.forEach(match => {
-        let playersHTML = "<h4>Player Stats:</h4><ul>";
-        match.players.forEach(p => {
-          playersHTML += `<li>${p.name} - Runs: ${p.runs}, Wickets: ${p.wickets}</li>`;
-        });
-        playersHTML += "</ul>";
-
-        const matchDiv = document.createElement("div");
-        matchDiv.classList.add("news-item");
-        matchDiv.innerHTML = `
-          <h3>${match.title}</h3>
-          <p><strong>Date:</strong> ${new Date(match.date).toLocaleDateString()}</p>
-          <p>${match.summary}</p>
-          ${playersHTML}
-        `;
-        resultsGrid.appendChild(matchDiv);
-      });
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
-  // Add Player
-  async function addPlayer() {
-    const name = document.getElementById("playerName").value;
-    const team = document.getElementById("playerTeam").value;
-
-    try {
-      const res = await fetch(`${API_BASE}/players`, {
-        method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({ name, team })
-      });
-      if(res.ok) alert("Player added!");
-    } catch(err) { console.error(err); }
-
-    document.getElementById("playerName").value = "";
-    document.getElementById("playerTeam").value = "";
-  }
-
-  // Add Match Result
-  async function addMatchResult() {
-    const title = document.getElementById("matchTitle").value;
-    const date = document.getElementById("matchDate").value;
-    const summary = document.getElementById("matchSummary").value;
-    const playersRaw = document.getElementById("matchPlayers").value;
-    const players = playersRaw.split(",").map(p => {
-      const [name,runs,wickets] = p.split("-");
-      return { name: name.trim(), runs: parseInt(runs), wickets: parseInt(wickets) };
-    });
-
-    try {
-      const res = await fetch(`${API_BASE}/match`, {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({title,date,summary,players})
-      });
-      if(res.ok) {
-        alert("Match Result added!");
-        fetchResults(); // immediately refresh public results
-      }
-    } catch(err){console.error(err);}
-
-    document.getElementById("matchTitle").value="";
-    document.getElementById("matchDate").value="";
-    document.getElementById("matchSummary").value="";
-    document.getElementById("matchPlayers").value="";
-  }
-
-  // Add Fixture
-  async function addFixture() {
-    const title = document.getElementById("fixtureTitle").value;
-    const date = document.getElementById("fixtureDate").value;
-    const venue = document.getElementById("fixtureVenue").value;
-
-    try {
-      const res = await fetch(`${API_BASE}/fixtures`, {
-        method:"POST",
-        headers:{"Content-Type":"application/json"},
-        body: JSON.stringify({ title, date, venue })
-      });
-      if(res.ok) alert("Fixture added!");
-    } catch(err){console.error(err);}
-
-    document.getElementById("fixtureTitle").value="";
-    document.getElementById("fixtureDate").value="";
-    document.getElementById("fixtureVenue").value="";
-  }
-
-  // Fetch results on page load for public
-  window.addEventListener("DOMContentLoaded", fetchResults);
-</script>
+      <!-- Results Grid for public -->
+      <div id="results-grid" class="results-grid"></div>
+    </section>
 
     <!-- About Section -->
     <section id="about" class="about-section">
@@ -403,16 +247,216 @@
   </footer>
 
   <script>
+    // Section Navigation
     function showSection(id) {
       const sections = document.querySelectorAll("main section");
       sections.forEach(section => section.classList.remove("active"));
       document.getElementById(id).classList.add("active");
+      
+      // Close mobile menu after navigation
+      if (window.innerWidth <= 768) {
+        document.getElementById('navMenu').classList.remove('active');
+      }
     }
+
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    // Handle navigation clicks for dropdown items
+    function handleNavClick(event, sectionId) {
+      if (window.innerWidth > 768) {
+        // Desktop: navigate directly
+        event.preventDefault();
+        showSection(sectionId);
+      } else {
+        // Mobile: toggle dropdown
+        event.preventDefault();
+        const parentLi = event.target.parentElement;
+        parentLi.classList.toggle('dropdown-open');
+      }
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const nav = document.querySelector('nav');
+      const menuToggle = document.querySelector('.menu-toggle');
+      
+      if (!nav.contains(event.target) && window.innerWidth <= 768) {
+        document.getElementById('navMenu').classList.remove('active');
+      }
+    });
+
+    // Results Section Scripts
+    const API_BASE = "https://bcc-backend-fhtg.onrender.com";
+    let currentType = "";
+    let currentAction = "";
+
+    function toggleLogin() {
+      const loginForm = document.getElementById("login-form");
+      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+    }
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if(username === "admin" && password === "1234") {
+        alert("Login successful!");
+        document.getElementById("admin-dashboard").style.display = "block";
+        document.getElementById("admin-login-area").style.display = "none";
+      } else {
+        alert("Invalid login details");
+      }
+    }
+
+    function showAdminOptions(type) {
+      currentType = type;
+      document.getElementById("admin-options").style.display = "block";
+      document.getElementById("form-container").innerHTML = "";
+    }
+
+    function showForm(action) {
+      currentAction = action;
+      let html = "";
+
+      if(currentType === "player") {
+        if(action === "add") {
+          html = `
+            <h4>Add Player</h4>
+            <input type="text" id="playerName" placeholder="Player Name" />
+            <input type="text" id="playerTeam" placeholder="Team / Division" />
+            <button onclick="addPlayer()">Add Player</button>
+          `;
+        } else {
+          html = `<h4>Edit Player</h4><p>(Implement your edit player logic here)</p>`;
+        }
+      } else if(currentType === "match") {
+        if(action === "add") {
+          html = `
+            <h4>Add Match Result</h4>
+            <input type="text" id="matchTitle" placeholder="Match Title" />
+            <input type="text" id="matchDate" placeholder="Date" />
+            <textarea id="matchSummary" placeholder="Match Summary"></textarea>
+            <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
+            <button onclick="addMatchResult()">Add Match Result</button>
+          `;
+        } else {
+          html = `<h4>Edit Match Result</h4><p>(Implement your edit match logic here)</p>`;
+        }
+      } else if(currentType === "fixture") {
+        if(action === "add") {
+          html = `
+            <h4>Add Fixture</h4>
+            <input type="text" id="fixtureTitle" placeholder="Fixture Title" />
+            <input type="text" id="fixtureDate" placeholder="Date" />
+            <input type="text" id="fixtureVenue" placeholder="Venue" />
+            <button onclick="addFixture()">Add Fixture</button>
+          `;
+        } else {
+          html = `<h4>Edit Fixture</h4><p>(Implement your edit fixture logic here)</p>`;
+        }
+      }
+
+      document.getElementById("form-container").innerHTML = html;
+    }
+
+    async function fetchResults() {
+      try {
+        const res = await fetch(`${API_BASE}/match`);
+        const matches = await res.json();
+        const resultsGrid = document.getElementById("results-grid");
+        resultsGrid.innerHTML = "";
+
+        matches.forEach(match => {
+          let playersHTML = "<h4>Player Stats:</h4><ul>";
+          match.players.forEach(p => {
+            playersHTML += `<li>${p.name} - Runs: ${p.runs}, Wickets: ${p.wickets}</li>`;
+          });
+          playersHTML += "</ul>";
+
+          const matchDiv = document.createElement("div");
+          matchDiv.classList.add("news-item");
+          matchDiv.innerHTML = `
+            <h3>${match.title}</h3>
+            <p><strong>Date:</strong> ${new Date(match.date).toLocaleDateString()}</p>
+            <p>${match.summary}</p>
+            ${playersHTML}
+          `;
+          resultsGrid.appendChild(matchDiv);
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function addPlayer() {
+      const name = document.getElementById("playerName").value;
+      const team = document.getElementById("playerTeam").value;
+
+      try {
+        const res = await fetch(`${API_BASE}/players`, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ name, team })
+        });
+        if(res.ok) alert("Player added!");
+      } catch(err) { console.error(err); }
+
+      document.getElementById("playerName").value = "";
+      document.getElementById("playerTeam").value = "";
+    }
+
+    async function addMatchResult() {
+      const title = document.getElementById("matchTitle").value;
+      const date = document.getElementById("matchDate").value;
+      const summary = document.getElementById("matchSummary").value;
+      const playersRaw = document.getElementById("matchPlayers").value;
+      const players = playersRaw.split(",").map(p => {
+        const [name,runs,wickets] = p.split("-");
+        return { name: name.trim(), runs: parseInt(runs), wickets: parseInt(wickets) };
+      });
+
+      try {
+        const res = await fetch(`${API_BASE}/match`, {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body: JSON.stringify({title,date,summary,players})
+        });
+        if(res.ok) {
+          alert("Match Result added!");
+          fetchResults();
+        }
+      } catch(err){console.error(err);}
+
+      document.getElementById("matchTitle").value="";
+      document.getElementById("matchDate").value="";
+      document.getElementById("matchSummary").value="";
+      document.getElementById("matchPlayers").value="";
+    }
+
+    async function addFixture() {
+      const title = document.getElementById("fixtureTitle").value;
+      const date = document.getElementById("fixtureDate").value;
+      const venue = document.getElementById("fixtureVenue").value;
+
+      try {
+        const res = await fetch(`${API_BASE}/fixtures`, {
+          method:"POST",
+          headers:{"Content-Type":"application/json"},
+          body: JSON.stringify({ title, date, venue })
+        });
+        if(res.ok) alert("Fixture added!");
+      } catch(err){console.error(err);}
+
+      document.getElementById("fixtureTitle").value="";
+      document.getElementById("fixtureDate").value="";
+      document.getElementById("fixtureVenue").value="";
+    }
+
+    window.addEventListener("DOMContentLoaded", fetchResults);
   </script>
 </body>
 </html>
-
-
-
-
-
