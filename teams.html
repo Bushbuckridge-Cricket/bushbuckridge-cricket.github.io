@@ -2,20 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Zimbabwe Men - Bushbuckridge CC</title>
+  <title>Bushbuckridge CC – Squads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     *{box-sizing:border-box;margin:0;padding:0;}
     body{font-family:Arial,sans-serif;background:#f5f5f5;color:#222;}
 
-    /* top red bar like coach.html main nav */
     .top-nav{
-      background:#d71920;
-      color:#fff;
-      padding:10px 40px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
+      background:#d71920;color:#fff;padding:10px 40px;
+      display:flex;align-items:center;justify-content:space-between;
     }
     .top-nav-left{display:flex;align-items:center;gap:12px;}
     .top-nav-logo{
@@ -24,162 +19,201 @@
     }
     .top-nav-title{font-weight:700;font-size:18px;}
     .top-nav-menu a{
-      color:#fff;
-      margin-left:18px;
-      font-size:13px;
-      text-decoration:none;
-      text-transform:uppercase;
-      letter-spacing:.4px;
+      color:#fff;margin-left:18px;font-size:13px;
+      text-decoration:none;text-transform:uppercase;letter-spacing:.4px;
     }
 
     .page-wrap{max-width:1200px;margin:24px auto 40px;padding:0 32px;}
 
-    /* team header block like Zim screenshot */
     .team-header{
-      display:flex;
-      align-items:center;
-      gap:24px;
-      margin-bottom:26px;
-      border-bottom:1px solid #e0e0e0;
-      padding-bottom:18px;
+      display:flex;align-items:center;gap:24px;
+      margin-bottom:18px;border-bottom:1px solid #e0e0e0;padding-bottom:14px;
     }
     .team-main-logo{
-      width:140px;height:140px;
-      background:#fff;
-      padding:18px;
-      border-radius:4px;
-      box-shadow:0 1px 4px rgba(0,0,0,0.16);
-      object-fit:contain;
+      width:110px;height:110px;background:#fff;padding:14px;
+      border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.16);object-fit:contain;
     }
-    .team-heading h1{
-      font-size:26px;
-      margin-bottom:6px;
-    }
-    .team-heading p{
-      font-size:14px;
-      color:#666;
-    }
-    .team-tabs{
-      margin-left:auto;
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    .team-tab{
-      border-radius:999px;
-      padding:6px 14px;
-      font-size:12px;
-      border:1px solid #d71920;
-      cursor:pointer;
-      background:#fff;
-      color:#d71920;
-    }
-    .team-tab.active{
-      background:#d71920;
-      color:#fff;
-    }
+    .team-heading h1{font-size:24px;margin-bottom:4px;}
+    .team-heading p{font-size:14px;color:#666;}
 
-    /* player cards grid */
+    .tabs-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+    .tab-btn{
+      border-radius:999px;padding:6px 14px;font-size:12px;
+      border:1px solid #d71920;cursor:pointer;
+      background:#fff;color:#d71920;
+    }
+    .tab-btn.active{background:#d71920;color:#fff;}
+
     .players-grid{
-      margin-top:26px;
+      margin-top:22px;
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:22px;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:18px;
     }
     .player-card{
-      background:#fff;
-      border-radius:4px;
+      background:#fff;border-radius:4px;
       box-shadow:0 1px 3px rgba(0,0,0,0.16);
-      overflow:hidden;
-      text-align:center;
+      overflow:hidden;text-align:center;
     }
     .player-photo{
-      width:100%;
-      height:230px;
-      object-fit:cover;
-      display:block;
-      background:#ddd;
+      width:100%;height:220px;object-fit:cover;display:block;background:#ddd;
     }
     .player-name{
-      padding:10px 8px 12px;
-      font-size:13px;
-      font-weight:600;
-      letter-spacing:.4px;
+      padding:10px 8px 12px;font-size:13px;font-weight:600;letter-spacing:.3px;
     }
 
+    .squad{display:none;}
+    .squad.active{display:block;}
+
     footer{
-      text-align:center;
-      font-size:12px;
-      color:#666;
-      padding:18px 0;
-      border-top:1px solid #e0e0e0;
-      background:#fafafa;
+      text-align:center;font-size:12px;color:#666;
+      padding:18px 0;border-top:1px solid #e0e0e0;background:#fafafa;
     }
 
     @media(max-width:700px){
       .page-wrap{padding:0 16px;}
       .team-header{flex-direction:column;align-items:flex-start;}
-      .team-tabs{margin-left:0;}
     }
   </style>
 </head>
 <body>
+<header class="top-nav">
+  <div class="top-nav-left">
+    <a href="index.html"><img src="club-logo.png" alt="Club logo" class="top-nav-logo"></a>
+    <span class="top-nav-title">Bushbuckridge Cricket Club</span>
+  </div>
+  <nav class="top-nav-menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="coach.html">Coaches</a>
+    <a href="teams.html">Teams</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <!-- top nav similar feeling to coach.html -->
-  <header class="top-nav">
-    <div class="top-nav-left">
-      <img src="club-logo.png" alt="Club logo" class="top-nav-logo">
-      <span class="top-nav-title">Bushbuckridge Cricket Club</span>
+<main class="page-wrap">
+  <section class="team-header">
+    <img src="club-logo.png" alt="Club logo" class="team-main-logo">
+    <div class="team-heading">
+      <h1>Bushbuckridge Squads</h1>
+      <p>Select gender and age group to view the squad.</p>
+      <div class="tabs-row" id="genderTabs">
+        <button class="tab-btn active" data-gender="boys">Boys</button>
+        <button class="tab-btn" data-gender="girls">Girls</button>
+      </div>
+      <div class="tabs-row" id="ageTabs">
+        <button class="tab-btn active" data-age="u13">Under 13</button>
+        <button class="tab-btn" data-age="u15">Under 15</button>
+        <button class="tab-btn" data-age="u19">Under 19</button>
+        <button class="tab-btn" data-age="senior">Senior</button>
+      </div>
     </div>
-    <nav class="top-nav-menu">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="coach.html">Coaches</a>
-      <a href="teams.html">Teams</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  </section>
 
-  <main class="page-wrap">
+  <!-- BOYS U13 -->
+  <section class="squad active" data-gender="boys" data-age="u13">
+    <h2>Boys – Under 13</h2>
+    <div class="players-grid">
+      <!-- 15 cards – replace images & names -->
+      <article class="player-card"><img src="b-u13-1.jpg" class="player-photo" alt=""><div class="player-name">PLAYER 1</div></article>
+      <!-- ... up to player 15 -->
+    </div>
+  </section>
 
-    <!-- header like zim page -->
-    <section class="team-header">
-      <img src="zim-logo.png" alt="Zimbabwe Men logo" class="team-main-logo">
-      <div class="team-heading">
-        <h1>Zimbabwe Men</h1>
-        <p>15 Players</p>
-      </div>
-      <div class="team-tabs">
-        <button class="team-tab active">Zimbabwe Men</button>
-        <button class="team-tab">Zimbabwe Women</button>
-        <button class="team-tab">Zimbabwe Under 19</button>
-      </div>
-    </section>
+  <!-- BOYS U15 -->
+  <section class="squad" data-gender="boys" data-age="u15">
+    <h2>Boys – Under 15</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
 
-    <!-- 15 player cards -->
-    <section class="players-grid">
-      <article class="player-card"><img src="player1.jpg"  class="player-photo" alt="Player 1"><div class="player-name">PLAYER ONE</div></article>
-      <article class="player-card"><img src="player2.jpg"  class="player-photo" alt="Player 2"><div class="player-name">PLAYER TWO</div></article>
-      <article class="player-card"><img src="player3.jpg"  class="player-photo" alt="Player 3"><div class="player-name">PLAYER THREE</div></article>
-       <article class="player-card"><img src="player4.jpg"  class="player-photo" alt="Player 4"><div class="player-name">PLAYER FOUR</div></article>
-      <article class="player-card"><img src="player5.jpg"  class="player-photo" alt="Player 5"><div class="player-name">PLAYER FIVE</div></article>
-      <article class="player-card"><img src="player6.jpg"  class="player-photo" alt="Player 6"><div class="player-name">PLAYER SIX</div></article>
-      <article class="player-card"><img src="player7.jpg"  class="player-photo" alt="Player 7"><div class="player-name">PLAYER SEVEN</div></article>
-      <article class="player-card"><img src="player8.jpg"  class="player-photo" alt="Player 8"><div class="player-name">PLAYER EIGHT</div></article>
-      <article class="player-card"><img src="player9.jpg"  class="player-photo" alt="Player 9"><div class="player-name">PLAYER NINE</div></article>
-      <article class="player-card"><img src="player10.jpg" class="player-photo" alt="Player 10"><div class="player-name">PLAYER TEN</div></article>
-      <article class="player-card"><img src="player11.jpg" class="player-photo" alt="Player 11"><div class="player-name">PLAYER ELEVEN</div></article>
-      <article class="player-card"><img src="player12.jpg" class="player-photo" alt="Player 12"><div class="player-name">PLAYER TWELVE</div></article>
-      <article class="player-card"><img src="player13.jpg" class="player-photo" alt="Player 13"><div class="player-name">PLAYER THIRTEEN</div></article>
-      <article class="player-card"><img src="player14.jpg" class="player-photo" alt="Player 14"><div class="player-name">PLAYER FOURTEEN</div></article>
-      <article class="player-card"><img src="player15.jpg" class="player-photo" alt="Player 15"><div class="player-name">PLAYER FIFTEEN</div></article>
-    </section>
+  <!-- BOYS U19 -->
+  <section class="squad" data-gender="boys" data-age="u19">
+    <h2>Boys – Under 19</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
 
-  </main>
+  <!-- BOYS SENIOR -->
+  <section class="squad" data-gender="boys" data-age="senior">
+    <h2>Boys – Senior</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
 
-  <footer>
-    &copy; 2025 Bushbuckridge Cricket Club. All rights reserved.
-  </footer>
+  <!-- GIRLS U13 -->
+  <section class="squad" data-gender="girls" data-age="u13">
+    <h2>Girls – Under 13</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
 
+  <!-- GIRLS U15 -->
+  <section class="squad" data-gender="girls" data-age="u15">
+    <h2>Girls – Under 15</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
+
+  <!-- GIRLS U19 -->
+  <section class="squad" data-gender="girls" data-age="u19">
+    <h2>Girls – Under 19</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
+
+  <!-- GIRLS SENIOR -->
+  <section class="squad" data-gender="girls" data-age="senior">
+    <h2>Girls – Senior</h2>
+    <div class="players-grid">
+      <!-- 15 cards -->
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Bushbuckridge Cricket Club. All rights reserved.
+</footer>
+
+<script>
+  const genderTabs = document.querySelectorAll('#genderTabs .tab-btn');
+  const ageTabs = document.querySelectorAll('#ageTabs .tab-btn');
+  const squads = document.querySelectorAll('.squad');
+
+  let currentGender = 'boys';
+  let currentAge = 'u13';
+
+  function updateSquads(){
+    squads.forEach(s=>{
+      const g = s.getAttribute('data-gender');
+      const a = s.getAttribute('data-age');
+      s.classList.toggle('active', g===currentGender && a===currentAge);
+    });
+  }
+
+  genderTabs.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      genderTabs.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentGender = btn.dataset.gender;
+      updateSquads();
+    });
+  });
+
+  ageTabs.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      ageTabs.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      currentAge = btn.dataset.age;
+      updateSquads();
+    });
+  });
+</script>
 </body>
 </html>
