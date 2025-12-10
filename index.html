@@ -1,15 +1,16 @@
+<!-- SAVE AS: index.html (HOME PAGE ONLY) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bushbuckridge Cricket Club | Official Website</title>
+  <title>Bushbuckridge Cricket Club | Home</title>
   <meta name="description" content="Official website of Bushbuckridge Cricket Club. Get the latest news, fixtures, team info, and more from the heart of the Lowveld." />
-  <meta name="keywords" content="Bushbuckridge, Cricket Club, Lowveld, Fixtures, Team, News, Sports, South Africa" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
+  <!-- SHARED HEADER -->
   <header>
     <div class="header-container">
       <div class="logo">
@@ -19,302 +20,59 @@
       <nav>
         <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
         <ul id="navMenu">
-          <li><a href="#" onclick="showSection('home')">🏠 Home</a></li>
-          
+          <li><a href="index.html">🏠 Home</a></li>
           <li class="has-dropdown">
-            <a href="#" onclick="handleNavClick(event, 'team')">👥 Team</a>
+            <a href="team.html">👥 Team</a>
             <ul class="dropdown">
-              <li><a href="#" onclick="showSection('team')">Team Overview</a></li>
-              <li><a href="#" onclick="showSection('team')">Players</a></li>
-              <li><a href="#" onclick="showSection('team')">Coaches</a></li>
+              <li><a href="team.html">Team Overview</a></li>
+              <li><a href="team.html#players">Players</a></li>
+              <li><a href="team.html#coaches">Coaches</a></li>
             </ul>
           </li>
-          
           <li class="has-dropdown">
-            <a href="#" onclick="handleNavClick(event, 'news')">📰 News</a>
+            <a href="news.html">📰 News</a>
             <ul class="dropdown">
-              <li><a href="#" onclick="showSection('news')">Latest News</a></li>
+              <li><a href="news.html">Latest News</a></li>
               <li><a href="matchreport.html">Match Reports</a></li>
               <li><a href="announcements.html">Announcements</a></li>
             </ul>
           </li>
-          
-          <li><a href="#" onclick="showSection('results')">📊 Results</a></li>
-          <li><a href="#" onclick="showSection('about')">ℹ️ About</a></li>
-          <li><a href="#" onclick="showSection('contact')">📞 Contact</a></li>
+          <li><a href="results.html">📊 Results</a></li>
+          <li><a href="about.html">ℹ️ About</a></li>
+          <li><a href="contact.html">📞 Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- HOME PAGE CONTENT ONLY -->
   <main>
-    <!-- Home Section -->
-    <section id="home" class="hero active">
+    <section class="hero">
       <h2>Welcome to Bushbuckridge Cricket Club</h2>
       <p>Representing the heart of the Lowveld with passion and pride.</p>
 
-      <!-- Latest News inside Home section -->
-      <div id="latest-news" class="latest-news">
+      <div class="latest-news">
         <h2>Latest News</h2>
         <div class="news-container">
           <article class="news-item">
             <img src="U12.jpg" alt="Match Result">
             <h3>🏏 Bushbuckridge U/13 Win by 7 Wickets</h3>
             <p><strong>Date:</strong> 14 August 2025</p>
-            <p>Bushbuckridge U/13 chased down 134 in 14.1 overs to beat White River by 7 wickets in the Ehlanzeni Primary School Cricket League.</p>
-            <a href="#" onclick="showSection('news')">Read More</a>
+            <p>Bushbuckridge U/13 chased down 134 in 14.1 overs to beat White River.</p>
+            <a href="news.html">Read More →</a>
           </article>
           <article class="news-item">
             <img src="t2.jpg" alt="News Image 1" />
             <h3>🏏 League's Update</h3>
-            <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-            <a href="#" onclick="showSection('news')">Read More</a>
+            <p>Girls Under 19 league starts 13th August.</p>
+            <a href="news.html">Read More →</a>
           </article>
           <article class="news-item">
             <img src="young-team.jpg" alt="News Image 2" />
-            <h3>🏏 Game Announced</h3>
-            <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-            <a href="#" onclick="showSection('news')">Read More</a>
+            <h3>🏏 U13 vs Barberton</h3>
+            <p>Thursday 31st at Barberton Laer School.</p>
+            <a href="news.html">Read More →</a>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- News Section -->
-    <section id="news" class="news-section">
-      <h2>Latest News</h2>
-      <article class="news-item">
-        <img src="U12.jpg" alt="Match Result">
-        <h3>🏏 Bushbuckridge U/13 Win by 7 Wickets</h3>
-        <p><strong>Date:</strong> 14 August 2025</p>
-        <p><strong>Match Summary:</strong>  
-          White River batted first and scored 134 runs for 9 wickets in 23 overs.  
-          Bushbuckridge U/13 replied strongly, reaching 135/3 in just 14.1 overs, securing a convincing 7-wicket victory.
-        </p>
-        <p><strong>Division:</strong> A | <strong>Age Group:</strong> Under 12 A</p>
-        <p><strong>Coaches:</strong> Ndlovu P.R (White River), J. Fouche (Bushbuckridge)</p>
-        <a href="#" onclick="showSection('results')">View Full Scorecard</a>
-      </article>
-      <article class="news-item">
-        <img src="t2.jpg" alt="News 2">
-        <h3>🏏 League's Update</h3>
-        <p><strong>Date:</strong> 29 July 2025</p>
-        <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
-      </article>
-      <article class="news-item">
-        <img src="team1.jpg" alt="News 3">
-        <h3>🏏 Game Announced</h3>
-        <p><strong>Date:</strong> 28 July 2025</p>
-        <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
-      </article>
-      <article class="news-item"> 
-        <img src="toured1.jpg" alt="News 3"> 
-        <h3>Tour To University of Limpopo</h3> 
-        <p><strong>Date:</strong> 27 July 2025</p> 
-        <p>Our Cricket Boys and Girls from University of Mpumalanga toured to University of Limpopo Sunday 27 July 2025.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a> 
-      </article>
-      <article class="news-item">
-        <img src="ack1.jpg" alt="News 4">
-        <h3>🇬🇧 Exhibition Game Hosted British Delegates</h3>
-        <p><strong>Date:</strong> 27 January 2024</p>
-        <p>Bushbuckridge Cricket Club hosted a special exhibition match at Acornhoek with UK delegates.</p> 
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a>
-      </article>
-      <article class="news-item"> 
-        <img src="eng1.jpg" alt="News 5"> 
-        <h3>🏏 Display Game Announced</h3>
-        <p><strong>Date:</strong> Jan 2024</p> 
-        <p>A display match with UK delegates at Acornhoek. Players prepared well for the game.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
-      </article>
-      <article class="news-item"> 
-        <img src="queen.jpg" alt="Queen Hlatshwayo"> 
-        <h3>🏏 Queen Hlatshwayo Represents Mpumalanga Rhinos</h3> 
-        <p><strong>Date:</strong> Dec 2023</p>
-        <p>Our own Queen Hlatshwayo played at the national week in Cape Town.</p>
-        <a href="https://www.facebook.com/100070892319155/posts/pfbid02QUoDAwGc6Db3KEkkfpMXrBnDYQ4ByfwGSSBUCXkzsrzhBNqftb8MNAtbCZ57YJc6l" target="_blank">View on Facebook</a>
-      </article> 
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="team-section">
-      <h2>Meet Our Team</h2>
-      <div class="team-grid">
-        <div class="team-member">
-          <img src="queen.jpg" alt="Queen Hlatshwayo" />
-          <h3>Queen Hlatshwayo</h3>
-          <p>All-Rounder – Represented Mpumalanga Rhinos</p>
-        </div>
-        <div class="team-member">
-          <img src="pic3.jpg" alt="Player 1" />
-          <h3>Player One</h3>
-          <p>Team – Ladies Senior</p>
-        </div>
-        <div class="team-member">
-          <img src="team1.jpg" alt="Player 2" />
-          <h3>Player Two</h3>
-          <p>Squad – Men's Team</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Results Section -->
-    <section id="results" class="results-section">
-      <h2>Match Results</h2>
-
-      <!-- Admin Login -->
-      <div id="admin-login-area">
-        <button onclick="toggleLogin()">Admin Login</button>
-        <div id="login-form" style="display:none; margin-top:10px;">
-          <input type="text" id="username" placeholder="Username" />
-          <input type="password" id="password" placeholder="Password" />
-          <button onclick="login()">Login</button>
-        </div>
-      </div>
-
-      <!-- Admin Dashboard (hidden until login) -->
-      <div id="admin-dashboard" style="display:none; margin-top:20px;">
-        <h3>Admin Dashboard</h3>
-        <div class="admin-buttons" style="margin-bottom:10px;">
-          <button onclick="showAdminOptions('player')">Player</button>
-          <button onclick="showAdminOptions('match')">Match Result</button>
-          <button onclick="showAdminOptions('fixture')">Fixture</button>
-        </div>
-
-        <!-- Admin Options (Add/Edit) -->
-        <div id="admin-options" style="display:none; margin-top:10px;">
-          <button onclick="showForm('add')">Add New</button>
-          <button onclick="showForm('edit')">Edit Existing</button>
-        </div>
-
-        <!-- Forms -->
-        <div id="form-container" style="margin-top:10px;"></div>
-      </div>
-
-      <!-- Results Grid for public -->
-      <div id="results-grid" class="results-grid"></div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-      <div class="about-hero">
-        <h2>Who We Are</h2>
-      </div>
-
-      <div class="about-content">
-        <div class="about-main">
-          <h3>BUSHBUCKRIDGE CRICKET CLUB</h3>
-          <p>
-            Bushbuckridge Cricket Club (BCC) is the leading cricket development organization in the Lowveld region, 
-            responsible for nurturing and developing cricket talent across all age groups and skill levels in Bushbuckridge, Mpumalanga.
-          </p>
-          <p>
-            We are dedicated to promoting the game of cricket in our community, providing opportunities for young 
-            players to develop their skills, and fostering a love for the sport that will last a lifetime.
-          </p>
-
-          <div class="mission-vision">
-            <div class="mission-box">
-              <h4>MISSION STATEMENT</h4>
-              <p>To promote the sustainable development of cricket as a leading sport in Bushbuckridge and the greater Lowveld region.</p>
-            </div>
-
-            <div class="vision-box">
-              <h4>VISION</h4>
-              <p>To be recognized as a successful cricket development hub that produces talented players for provincial and national levels.</p>
-            </div>
-          </div>
-
-          <div class="core-values">
-            <h3>CORE VALUES</h3>
-            <div class="values-grid">
-              <div class="value-item">
-                <img src="professionalism-icon.png" alt="Professionalism">
-                <h5>PROFESSIONALISM</h5>
-              </div>
-              <div class="value-item">
-                <img src="teamwork-icon.png" alt="Team Work">
-                <h5>TEAM WORK</h5>
-              </div>
-              <div class="value-item">
-                <img src="integrity-icon.png" alt="Integrity">
-                <h5>INTEGRITY</h5>
-              </div>
-              <div class="value-item">
-                <img src="excellence-icon.png" alt="Excellence">
-                <h5>EXCELLENCE</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="associations-section">
-        <h3>OUR PARTNER ASSOCIATIONS</h3>
-        <div class="associations-grid">
-          <div class="association-item">
-            <img src="association1.png" alt="Association 1">
-          </div>
-          <div class="association-item">
-            <img src="association2.png" alt="Association 2">
-          </div>
-          <div class="association-item">
-            <img src="association3.png" alt="Association 3">
-          </div>
-          <div class="association-item">
-            <img src="association4.png" alt="Association 4">
-          </div>
-          <div class="association-item">
-            <img src="association5.png" alt="Association 5">
-          </div>
-          <div class="association-item">
-            <img src="association6.png" alt="Association 6">
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="contact-hero">
-        <h2>Contact Us</h2>
-      </div>
-
-      <div class="contact-layout">
-        <div class="contact-info">
-          <h3>BUSHBUCKRIDGE CRICKET DEVELOPMENT CLUB</h3>
-
-          <p>
-            <strong>Address:</strong><br>
-            Tamajane Senior Secondary School<br>
-            Tekamahala Trust, Hazyview, 1242<br>
-            PO Box 955, Hazyview, 1242
-          </p>
-
-          <p>
-            <strong>Telephone:</strong><br>
-            +27 76 881 2006 / +27 71 152 0881
-          </p>
-
-          <p>
-            <strong>E-mail:</strong><br>
-            <a href="mailto:bushbuckridgedevelopmentcricke@gmail.com">
-              bushbuckridgedevelopmentcricke@gmail.com
-            </a>
-          </p>
-        </div>
-
-        <div class="contact-map">
-          <h3>LOCATION IN MAP</h3>
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3630.5!2d31.198126!3d-24.953696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjTCsDU3JzEzLjMiUyAzMcKwMTEnNTMuMiJF!5e0!3m2!1sen!2sza!4v1234567890"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
         </div>
       </div>
     </section>
@@ -326,146 +84,8 @@
   </footer>
 
   <script>
-    // Section Navigation
-    function showSection(id) {
-      const sections = document.querySelectorAll("main section");
-      sections.forEach(section => section.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      
-      // Close mobile menu after navigation
-      if (window.innerWidth <= 768) {
-        document.getElementById('navMenu').classList.remove('active');
-      }
-    }
-
-    // Mobile Menu Toggle
     function toggleMenu() {
-      const navMenu = document.getElementById('navMenu');
-      navMenu.classList.toggle('active');
-    }
-
-    // Handle navigation clicks for dropdown items
-    function handleNavClick(event, sectionId) {
-      if (window.innerWidth > 768) {
-        event.preventDefault();
-        showSection(sectionId);
-      } else {
-        event.preventDefault();
-        const parentLi = event.target.parentElement;
-        parentLi.classList.toggle('dropdown-open');
-      }
-    }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const nav = document.querySelector('nav');
-      
-      if (!nav.contains(event.target) && window.innerWidth <= 768) {
-        document.getElementById('navMenu').classList.remove('active');
-      }
-    });
-
-    // Results Section Scripts
-    const API_BASE = "https://bcc-backend-fhtg.onrender.com";
-    let currentType = "";
-    let currentAction = "";
-
-    function toggleLogin() {
-      const loginForm = document.getElementById("login-form");
-      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
-    }
-
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-
-      if(username === "admin" && password === "1234") {
-        alert("Login successful!");
-        document.getElementById("admin-dashboard").style.display = "block";
-        document.getElementById("admin-login-area").style.display = "none";
-      } else {
-        alert("Invalid login details");
-      }
-    }
-
-    function showAdminOptions(type) {
-      currentType = type;
-      document.getElementById("admin-options").style.display = "block";
-      document.getElementById("form-container").innerHTML = "";
-    }
-
-    function showForm(action) {
-      currentAction = action;
-      let html = "";
-
-      if(currentType === "player") {
-        if(action === "add") {
-          html = `
-            <h4>Add Player</h4>
-            <input type="text" id="playerName" placeholder="Player Name" />
-            <input type="text" id="playerTeam" placeholder="Team / Division" />
-            <button onclick="addPlayer()">Add Player</button>
-          `;
-        } else {
-          html = `<h4>Edit Player</h4><p>(Implement your edit player logic here)</p>`;
-        }
-      } else if(currentType === "match") {
-        if(action === "add") {
-          html = `
-            <h4>Add Match Result</h4>
-            <input type="text" id="matchTitle" placeholder="Match Title" />
-            <input type="text" id="matchDate" placeholder="Date" />
-            <textarea id="matchSummary" placeholder="Match Summary"></textarea>
-            <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
-            <button onclick="addMatchResult()">Add Match Result</button>
-          `;
-        } else {
-          html = `<h4>Edit Match Result</h4><p>(Implement your edit match logic here)</p>`;
-        }
-      } else if(currentType === "fixture") {
-        if(action === "add") {
-          html = `
-            <h4>Add Fixture</h4>
-            <input type="text" id="fixtureTitle" placeholder="Fixture Title" />
-            <input type="text" id="fixtureDate" placeholder="Date" />
-            <input type="text" id="fixtureVenue" placeholder="Venue" />
-            <button onclick="addFixture()">Add Fixture</button>
-          `;
-        } else {
-          html = `<h4>Edit Fixture</h4><p>(Implement your edit fixture logic here)</p>`;
-        }
-      }
-
-      document.getElementById("form-container").innerHTML = html;
-    }
-
-    async function fetchResults() {
-      try {
-        const res = await fetch(`${API_BASE}/match`);
-        const matches = await res.json();
-        const resultsGrid = document.getElementById("results-grid");
-        resultsGrid.innerHTML = "";
-
-        matches.forEach(match => {
-          let playersHTML = "<h4>Player Stats:</h4>";
-          if (match.players) {
-            match.players.split(',').forEach(player => {
-              playersHTML += `<p>${player.trim()}</p>`;
-            });
-          }
-          
-          resultsGrid.innerHTML += `
-            <div class="result-card">
-              <h4>${match.title}</h4>
-              <p>${match.date}</p>
-              <p>${match.summary}</p>
-              ${playersHTML}
-            </div>
-          `;
-        });
-      } catch (error) {
-        console.error('Error fetching results:', error);
-      }
+      document.getElementById('navMenu').classList.toggle('active');
     }
   </script>
 </body>
