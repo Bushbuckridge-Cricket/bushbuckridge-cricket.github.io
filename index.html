@@ -766,4 +766,19 @@
 
         matches.forEach(match => {
           let playersHTML = "<h4>Player Stats:</h4>
+<script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+    document.querySelectorAll('.has-dropdown > a').forEach(a => {
+      a.addEventListener('click', function (e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          this.parentElement.classList.toggle('dropdown-open');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
 
