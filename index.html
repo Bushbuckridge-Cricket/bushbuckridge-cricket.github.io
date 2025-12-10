@@ -8,22 +8,28 @@
   <meta name="keywords" content="Bushbuckridge, Cricket Club, Lowveld, Fixtures, Team, News, Sports, South Africa" />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <style>
+    /* Simple section show/hide for single-page navigation */
+    main section { display: none; }
+    main section.active { display: block; }
+  </style>
 </head>
 <body>
-  <!-- FIXED HEADER STRUCTURE -->
+  <!-- HEADER -->
   <header>
     <div class="header-container">
       <div class="logo">
         <img src="official logo.jpg" alt="Bushbuckridge Cricket Club official logo" />
         <h1>Bushbuckridge Cricket Club</h1>
       </div>
+
       <nav>
         <button class="menu-toggle" onclick="toggleMenu()">☰ Menu</button>
         <ul id="navMenu">
           <li><a href="#" onclick="showSection('home')">Home</a></li>
-          
+
           <li class="has-dropdown">
-            <a href="#" onclick="handleNavClick(event, 'team')">Team</a>
+            <a href="#">Team</a>
             <ul class="dropdown">
               <li><a href="#" onclick="showSection('team')">Team Overview</a></li>
               <li><a href="#" onclick="showSection('team')">Players</a></li>
@@ -32,7 +38,7 @@
           </li>
           
           <li class="has-dropdown">
-            <a href="#" onclick="handleNavClick(event, 'news')">News</a>
+            <a href="#">News</a>
             <ul class="dropdown">
               <li><a href="#" onclick="showSection('news')">Latest News</a></li>
               <li><a href="matchreport.html">Match Reports</a></li>
@@ -49,13 +55,11 @@
   </header>
 
   <main>
-    <!-- ALL YOUR SECTIONS STAY EXACTLY THE SAME -->
-    <!-- Home Section -->
+    <!-- HOME -->
     <section id="home" class="hero active">
       <h2>Welcome to Bushbuckridge Cricket Club</h2>
       <p>Representing the heart of the Lowveld with passion and pride.</p>
 
-      <!-- Latest News inside Home section -->
       <div id="latest-news" class="latest-news">
         <h2>Latest News</h2>
         <div class="news-container">
@@ -82,17 +86,14 @@
       </div>
     </section>
 
-    <!-- News Section -->
+    <!-- NEWS -->
     <section id="news" class="news-section">
       <h2>Latest News</h2>
       <article class="news-item">
         <img src="U12.jpg" alt="Match Result">
         <h3>🏏 Bushbuckridge U/13 Win by 7 Wickets</h3>
         <p><strong>Date:</strong> 14 August 2025</p>
-        <p><strong>Match Summary:</strong>  
-          White River batted first and scored 134 runs for 9 wickets in 23 overs.  
-          Bushbuckridge U/13 replied strongly, reaching 135/3 in just 14.1 overs, securing a convincing 7-wicket victory.
-        </p>
+        <p><strong>Match Summary:</strong> White River batted first and scored 134 runs for 9 wickets in 23 overs. Bushbuckridge U/13 replied strongly, reaching 135/3 in just 14.1 overs, securing a convincing 7‑wicket victory.</p>
         <p><strong>Division:</strong> A | <strong>Age Group:</strong> Under 12 A</p>
         <p><strong>Coaches:</strong> Ndlovu P.R (White River), J. Fouche (Bushbuckridge)</p>
         <a href="#" onclick="showSection('results')">View Full Scorecard</a>
@@ -141,7 +142,7 @@
       </article> 
     </section>
 
-    <!-- Team Section -->
+    <!-- TEAM -->
     <section id="team" class="team-section">
       <h2>Meet Our Team</h2>
       <div class="team-grid">
@@ -163,11 +164,10 @@
       </div>
     </section>
 
-    <!-- Results Section -->
+    <!-- RESULTS -->
     <section id="results" class="results-section">
       <h2>Match Results</h2>
 
-      <!-- Admin Login -->
       <div id="admin-login-area">
         <button onclick="toggleLogin()">Admin Login</button>
         <div id="login-form" style="display:none; margin-top:10px;">
@@ -177,7 +177,6 @@
         </div>
       </div>
 
-      <!-- Admin Dashboard (hidden until login) -->
       <div id="admin-dashboard" style="display:none; margin-top:20px;">
         <h3>Admin Dashboard</h3>
         <div class="admin-buttons" style="margin-bottom:10px;">
@@ -186,21 +185,18 @@
           <button onclick="showAdminOptions('fixture')">Fixture</button>
         </div>
 
-        <!-- Admin Options (Add/Edit) -->
         <div id="admin-options" style="display:none; margin-top:10px;">
           <button onclick="showForm('add')">Add New</button>
           <button onclick="showForm('edit')">Edit Existing</button>
         </div>
 
-        <!-- Forms -->
         <div id="form-container" style="margin-top:10px;"></div>
       </div>
 
-      <!-- Results Grid for public -->
       <div id="results-grid" class="results-grid"></div>
     </section>
 
-    <!-- About Section - KEEP ALL YOUR CONTENT EXACTLY SAME -->
+    <!-- ABOUT -->
     <section id="about">
       <div class="about-hero">
         <h2>Who We Are</h2>
@@ -210,11 +206,11 @@
         <div class="about-main">
           <h3>BUSHBUCKRIDGE CRICKET CLUB</h3>
           <p>
-            Bushbuckridge Cricket Club (BCC) is the leading cricket development organization in the Lowveld region, 
+            Bushbuckridge Cricket Club (BCC) is the leading cricket development organization in the Lowveld region,
             responsible for nurturing and developing cricket talent across all age groups and skill levels in Bushbuckridge, Mpumalanga.
           </p>
           <p>
-            We are dedicated to promoting the game of cricket in our community, providing opportunities for young 
+            We are dedicated to promoting the game of cricket in our community, providing opportunities for young
             players to develop their skills, and fostering a love for the sport that will last a lifetime.
           </p>
 
@@ -279,7 +275,7 @@
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- CONTACT -->
     <section id="contact">
       <div class="contact-hero">
         <h2>Contact Us</h2>
@@ -327,45 +323,28 @@
     <p>Follow us: <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Facebook</a></p>
   </footer>
 
-  <!-- FIXED COMPLETE SCRIPT - ONE SCRIPT TAG ONLY -->
-  <style>
-    /* ADD THIS TO YOUR style.css OR KEEP HERE */
-    section { display: none; }
-    section.active { display: block; }
-  </style>
-
+  <!-- SCRIPTS -->
   <script>
-    // Section Navigation
+    // Show/hide sections (single-page navigation)
     function showSection(id) {
       const sections = document.querySelectorAll("main section");
       sections.forEach(section => section.classList.remove("active"));
-      document.getElementById(id).classList.add("active");
-      
+      const target = document.getElementById(id);
+      if (target) target.classList.add("active");
+
       // Close mobile menu after navigation
       if (window.innerWidth <= 768) {
         document.getElementById('navMenu').classList.remove('active');
       }
     }
 
-    // FIXED Mobile Menu Toggle
+    // Mobile Menu Toggle
     function toggleMenu() {
       document.getElementById('navMenu').classList.toggle('active');
     }
 
-    // Handle navigation clicks for dropdown items
-    function handleNavClick(event, sectionId) {
-      if (window.innerWidth > 768) {
-        event.preventDefault();
-        showSection(sectionId);
-      } else {
-        event.preventDefault();
-        const parentLi = event.target.parentElement;
-        parentLi.classList.toggle('dropdown-open');
-      }
-    }
-
-    // Mobile dropdown toggle on load
-    window.addEventListener('load', function() {
+    // Mobile dropdown toggle (Team, News)
+    window.addEventListener('load', function () {
       document.querySelectorAll('.has-dropdown > a').forEach(a => {
         a.addEventListener('click', function (e) {
           if (window.innerWidth <= 768) {
@@ -376,28 +355,29 @@
       });
     });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(event) {
+    // Close mobile menu when clicking outside nav
+    document.addEventListener('click', function (event) {
       const nav = document.querySelector('nav');
       if (!nav.contains(event.target) && window.innerWidth <= 768) {
         document.getElementById('navMenu').classList.remove('active');
       }
     });
 
-    // Results Section Scripts
+    // Results / Admin logic (simple placeholders)
     const API_BASE = "https://bcc-backend-fhtg.onrender.com";
     let currentType = "";
     let currentAction = "";
 
     function toggleLogin() {
       const loginForm = document.getElementById("login-form");
-      loginForm.style.display = loginForm.style.display === "none" ? "block" : "none";
+      loginForm.style.display = (loginForm.style.display === "none" || loginForm.style.display === "") 
+        ? "block" : "none";
     }
 
     function login() {
       const username = document.getElementById("username").value;
       const password = document.getElementById("password").value;
-      if(username === "admin" && password === "1234") {
+      if (username === "admin" && password === "1234") {
         alert("Login successful!");
         document.getElementById("admin-dashboard").style.display = "block";
         document.getElementById("admin-login-area").style.display = "none";
@@ -415,8 +395,8 @@
     function showForm(action) {
       currentAction = action;
       let html = "";
-      if(currentType === "player") {
-        if(action === "add") {
+      if (currentType === "player") {
+        if (action === "add") {
           html = `
             <h4>Add Player</h4>
             <input type="text" id="playerName" placeholder="Player Name" />
@@ -426,8 +406,8 @@
         } else {
           html = `<h4>Edit Player</h4><p>(Implement your edit player logic here)</p>`;
         }
-      } else if(currentType === "match") {
-        if(action === "add") {
+      } else if (currentType === "match") {
+        if (action === "add") {
           html = `
             <h4>Add Match Result</h4>
             <input type="text" id="matchTitle" placeholder="Match Title" />
@@ -439,8 +419,8 @@
         } else {
           html = `<h4>Edit Match Result</h4><p>(Implement your edit match logic here)</p>`;
         }
-      } else if(currentType === "fixture") {
-        if(action === "add") {
+      } else if (currentType === "fixture") {
+        if (action === "add") {
           html = `
             <h4>Add Fixture</h4>
             <input type="text" id="fixtureTitle" placeholder="Fixture Title" />
@@ -455,12 +435,11 @@
       document.getElementById("form-container").innerHTML = html;
     }
 
-    // Placeholder functions
-    function addPlayer() { alert("Player added!"); }
-    function addMatchResult() { alert("Match result added!"); }
-    function addFixture() { alert("Fixture added!"); }
+    // Simple placeholder implementations
+    function addPlayer() { alert("Player added (placeholder)."); }
+    function addMatchResult() { alert("Match result added (placeholder)."); }
+    function addFixture() { alert("Fixture added (placeholder)."); }
 
-    // Fetch results on load
     async function fetchResults() {
       try {
         const res = await fetch(`${API_BASE}/match`);
@@ -475,7 +454,6 @@
               playersHTML += `<p>${player.trim()}</p>`;
             });
           }
-          
           resultsGrid.innerHTML += `
             <div class="result-card">
               <h4>${match.title}</h4>
@@ -487,12 +465,12 @@
         });
       } catch (error) {
         console.error('Error fetching results:', error);
-        document.getElementById("results-grid").innerHTML = 
+        document.getElementById("results-grid").innerHTML =
           '<div class="result-card"><p>No results available at this time.</p></div>';
       }
     }
 
-    // Load results when page loads
+    // Load results on page load
     window.addEventListener('load', fetchResults);
   </script>
 </body>
