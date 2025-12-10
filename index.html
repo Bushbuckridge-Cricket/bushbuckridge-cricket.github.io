@@ -54,93 +54,113 @@
     </div>
   </header>
 
-  <main>
-    <!-- HOME -->
-    <section id="home" class="hero active">
-      <h2>Welcome to Bushbuckridge Cricket Club</h2>
-      <p>Representing the heart of the Lowveld with passion and pride.</p>
-
-      <div id="latest-news" class="latest-news">
-        <h2>Latest News</h2>
-        <div class="news-container">
-          <article class="news-item">
-            <img src="U12.jpg" alt="Match Result">
-            <h3>🏏 Bushbuckridge U/13 Win by 7 Wickets</h3>
-            <p><strong>Date:</strong> 14 August 2025</p>
-            <p>Bushbuckridge U/13 chased down 134 in 14.1 overs to beat White River by 7 wickets in the Ehlanzeni Primary School Cricket League.</p>
-            <a href="#" onclick="showSection('news')">Read More</a>
-          </article>
-          <article class="news-item">
-            <img src="t2.jpg" alt="News Image 1" />
-            <h3>🏏 League's Update</h3>
-            <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-            <a href="#" onclick="showSection('news')">Read More</a>
-          </article>
-          <article class="news-item">
-            <img src="young-team.jpg" alt="News Image 2" />
-            <h3>🏏 Game Announced</h3>
-            <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-            <a href="#" onclick="showSection('news')">Read More</a>
-          </article>
-        </div>
+ 
+<main>
+  <!-- HOME – Fixtures strip + intro -->
+  <section id="home" class="hero active">
+    <!-- Fixtures strip -->
+    <div class="fixtures-strip">
+      <div class="fixture-card">
+        <span class="badge-upcoming">UPCOMING</span>
+        <p class="fixture-competition">Bushbuckridge League T20</p>
+        <p class="fixture-teams">Bushbuckridge CC vs White River</p>
+        <p class="fixture-datetime">12 December 2025, 14:00</p>
       </div>
-    </section>
+      <div class="fixture-card">
+        <span class="badge-upcoming">UPCOMING</span>
+        <p class="fixture-competition">Lowveld U/13 League</p>
+        <p class="fixture-teams">Bushbuckridge U/13 vs Barberton</p>
+        <p class="fixture-datetime">18 December 2025, 10:00</p>
+      </div>
+      <div class="fixture-card">
+        <span class="badge-upcoming">UPCOMING</span>
+        <p class="fixture-competition">Friendly</p>
+        <p class="fixture-teams">Bushbuckridge Ladies vs Rhinos Ladies</p>
+        <p class="fixture-datetime">20 December 2025, 09:30</p>
+      </div>
+    </div>
 
-    <!-- NEWS -->
-    <section id="news" class="news-section">
-      <h2>Latest News</h2>
+    <!-- Short home intro -->
+    <div class="home-intro">
+      <h2>Welcome to Bushbuckridge Cricket Club</h2>
+      <p>Developing cricket talent in the heart of the Lowveld.</p>
+    </div>
+  </section>
+
+  <!-- MEDIA ROW: Videos + Stay Connected -->
+  <section class="media-row">
+    <div class="media-block">
+      <div class="media-header">
+        <h2>Videos</h2>
+        <a href="#" onclick="showSection('news')" class="view-more">VIEW MORE</a>
+      </div>
+      <div class="media-grid">
+        <article class="media-item">
+          <img src="U12.jpg" alt="Match highlights">
+          <h3>U/13 Highlights vs White River</h3>
+        </article>
+        <article class="media-item">
+          <img src="t2.jpg" alt="Training session">
+          <h3>Pre‑season Training Session</h3>
+        </article>
+      </div>
+    </div>
+
+    <div class="social-block">
+      <h2>Stay Connected</h2>
+      <p>Follow our latest fixtures, results and photos.</p>
+      <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank" class="social-link">
+        Visit our Facebook page
+      </a>
+    </div>
+  </section>
+
+  <!-- NEWS – Domestic style grid -->
+  <section id="news" class="news-section">
+    <div class="news-header-bar">
+      <h2>Domestic News</h2>
+      <div class="news-filters">
+        <button class="filter active" type="button">ALL</button>
+        <button class="filter" type="button">Junior Cricket</button>
+        <button class="filter" type="button">Women</button>
+        <button class="filter" type="button">Men</button>
+      </div>
+    </div>
+
+    <div class="news-grid">
       <article class="news-item">
         <img src="U12.jpg" alt="Match Result">
-        <h3>🏏 Bushbuckridge U/13 Win by 7 Wickets</h3>
+        <span class="news-tag">U/13 LEAGUE</span>
+        <h3>Rhinos stampeded as Bushbuckridge win nail‑biter</h3>
         <p><strong>Date:</strong> 14 August 2025</p>
-        <p><strong>Match Summary:</strong> White River batted first and scored 134 runs for 9 wickets in 23 overs. Bushbuckridge U/13 replied strongly, reaching 135/3 in just 14.1 overs, securing a convincing 7‑wicket victory.</p>
-        <p><strong>Division:</strong> A | <strong>Age Group:</strong> Under 12 A</p>
-        <p><strong>Coaches:</strong> Ndlovu P.R (White River), J. Fouche (Bushbuckridge)</p>
-        <a href="#" onclick="showSection('results')">View Full Scorecard</a>
+        <p>U/13 chase 134 with a powerful batting display to win by 7 wickets.</p>
       </article>
+
       <article class="news-item">
-        <img src="t2.jpg" alt="News 2">
-        <h3>🏏 League's Update</h3>
+        <img src="t2.jpg" alt="League update">
+        <span class="news-tag">FIXTURES</span>
+        <h3>Girls U/19 league gets underway</h3>
         <p><strong>Date:</strong> 29 July 2025</p>
-        <p>Girls Under 19 will start their league on the 13th August. The following weekend will be our U15 and U19 boys.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
+        <p>Girls U/19 start on 13 August, followed by U/15 and U/19 boys.</p>
       </article>
+
       <article class="news-item">
-        <img src="team1.jpg" alt="News 3">
-        <h3>🏏 Game Announced</h3>
-        <p><strong>Date:</strong> 28 July 2025</p>
-        <p>Our Under 13 boys will travel to Barberton Laer skool on Thursday 31st for a league game.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
+        <img src="toured1.jpg" alt="Tour">
+        <span class="news-tag">TOUR</span>
+        <h3>University of Limpopo tour</h3>
+        <p><strong>Date:</strong> 27 July 2025</p>
+        <p>UMP boys and girls travel to Limpopo for a development series.</p>
       </article>
-      <article class="news-item"> 
-        <img src="toured1.jpg" alt="News 3"> 
-        <h3>Tour To University of Limpopo</h3> 
-        <p><strong>Date:</strong> 27 July 2025</p> 
-        <p>Our Cricket Boys and Girls from University of Mpumalanga toured to University of Limpopo Sunday 27 July 2025.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a> 
-      </article>
+
       <article class="news-item">
-        <img src="ack1.jpg" alt="News 4">
-        <h3>🇬🇧 Exhibition Game Hosted British Delegates</h3>
-        <p><strong>Date:</strong> 27 January 2024</p>
-        <p>Bushbuckridge Cricket Club hosted a special exhibition match at Acornhoek with UK delegates.</p> 
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">View on Facebook</a>
-      </article>
-      <article class="news-item"> 
-        <img src="eng1.jpg" alt="News 5"> 
-        <h3>🏏 Display Game Announced</h3>
-        <p><strong>Date:</strong> Jan 2024</p> 
-        <p>A display match with UK delegates at Acornhoek. Players prepared well for the game.</p>
-        <a href="https://www.facebook.com/profile.php?id=100070892319155" target="_blank">Read more on Facebook</a>
-      </article>
-      <article class="news-item"> 
-        <img src="queen.jpg" alt="Queen Hlatshwayo"> 
-        <h3>🏏 Queen Hlatshwayo Represents Mpumalanga Rhinos</h3> 
+        <img src="queen.jpg" alt="Queen Hlatshwayo">
+        <span class="news-tag">REPRESENTATIVE</span>
+        <h3>Queen Hlatshwayo represents Mpumalanga Rhinos</h3>
         <p><strong>Date:</strong> Dec 2023</p>
-        <p>Our own Queen Hlatshwayo played at the national week in Cape Town.</p>
-        <a href="https://www.facebook.com/100070892319155/posts/pfbid02QUoDAwGc6Db3KEkkfpMXrBnDYQ4ByfwGSSBUCXkzsrzhBNqftb8MNAtbCZ57YJc6l" target="_blank">View on Facebook</a>
-      </article> 
-    </section>
+        <p>Queen shines at the national week in Cape Town.</p>
+      </article>
+    </div>
+  </section>
 
     <!-- TEAM -->
     <section id="team" class="team-section">
@@ -475,3 +495,4 @@
   </script>
 </body>
 </html>
+
