@@ -222,23 +222,48 @@ nav a:hover {
   margin-bottom: 15px;
 }
 
-/* Team */
-.team-section {
-  padding: 40px 20px;
-  text-align: center;
+.team-section{
+  padding:40px 16px;
+  max-width:1100px;
+  margin:0 auto;
+  text-align:center;
+}
+.team-section h2{
+  font-size:24px;
+  color:#b71c1c;
+  margin-bottom:6px;
+}
+.team-intro{
+  font-size:14px;
+  color:#555;
+  margin-bottom:18px;
+}
+.team-tags{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin-bottom:18px;
+}
+.team-pill{
+  padding:6px 14px;
+  border-radius:999px;
+  border:1px solid #b71c1c;
+  font-size:12px;
+  color:#b71c1c;
+  background:#fff;
+}
+.team-button{
+  display:inline-block;
+  padding:8px 20px;
+  background:#b71c1c;
+  color:#fff;
+  border-radius:999px;
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:.4px;
 }
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-
-.team-member img {
-  width: 100%;
-  max-width: 300px;
-  margin-bottom: 10px;
-}
 
 /* Results */
 .results-section {
@@ -403,4 +428,5 @@ img {
     grid-template-columns: 1fr 1fr;
   }
 }
+
 
