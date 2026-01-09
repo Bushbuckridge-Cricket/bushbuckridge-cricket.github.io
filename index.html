@@ -239,8 +239,7 @@
 </section>
 
 
-
-    <!-- RESULTS -->
+<!-- RESULTS -->
 <section id="results" class="results-section">
   <h2>Match Results</h2>
 
@@ -301,44 +300,9 @@
       <p class="result-outcome loss">Lost by 27 runs</p>
     </div>
 
-    <!-- Friendly: BBR 1 vs BBR 2 -->
-    <div class="result-card">
-      <span class="result-league">Friendly Match</span>
-      <h4>BBR 1 vs BBR 2</h4>
-      <p class="result-score">
-        BBR 1 <strong>162/2 (20 ovs)</strong><br>
-        BBR 2 <strong>165/4 (14.2 ovs)</strong>
-      </p>
-      <p class="result-outcome win">BBR 2 won by 6 wickets</p>
-    </div>
-    
-      <div id="admin-login-area">
-        <button onclick="toggleLogin()">Admin Login</button>
-        <div id="login-form" style="display:none; margin-top:10px;">
-          <input type="text" id="username" placeholder="Username" />
-          <input type="password" id="password" placeholder="Password" />
-          <button onclick="login()">Login</button>
-        </div>
-      </div>
+  </div>
+</section>
 
-      <div id="admin-dashboard" style="display:none; margin-top:20px;">
-        <h3>Admin Dashboard</h3>
-        <div class="admin-buttons" style="margin-bottom:10px;">
-          <button onclick="showAdminOptions('player')">Player</button>
-          <button onclick="showAdminOptions('match')">Match Result</button>
-          <button onclick="showAdminOptions('fixture')">Fixture</button>
-        </div>
-
-        <div id="admin-options" style="display:none; margin-top:10px;">
-          <button onclick="showForm('add')">Add New</button>
-          <button onclick="showForm('edit')">Edit Existing</button>
-        </div>
-
-        <div id="form-container" style="margin-top:10px;"></div>
-      </div>
-
-      <div id="results-grid" class="results-grid"></div>
-    </section>
 
     <!-- ABOUT -->
     <section id="about">
@@ -506,119 +470,10 @@
         document.getElementById('navMenu').classList.remove('active');
       }
     });
-
-    // Results / Admin logic (simple placeholders)
-    const API_BASE = "https://bcc-backend-fhtg.onrender.com";
-    let currentType = "";
-    let currentAction = "";
-
-    function toggleLogin() {
-      const loginForm = document.getElementById("login-form");
-      loginForm.style.display = (loginForm.style.display === "none" || loginForm.style.display === "") 
-        ? "block" : "none";
-    }
-
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
-      if (username === "admin" && password === "1234") {
-        alert("Login successful!");
-        document.getElementById("admin-dashboard").style.display = "block";
-        document.getElementById("admin-login-area").style.display = "none";
-      } else {
-        alert("Invalid login details");
-      }
-    }
-
-    function showAdminOptions(type) {
-      currentType = type;
-      document.getElementById("admin-options").style.display = "block";
-      document.getElementById("form-container").innerHTML = "";
-    }
-
-    function showForm(action) {
-      currentAction = action;
-      let html = "";
-      if (currentType === "player") {
-        if (action === "add") {
-          html = `
-            <h4>Add Player</h4>
-            <input type="text" id="playerName" placeholder="Player Name" />
-            <input type="text" id="playerTeam" placeholder="Team / Division" />
-            <button onclick="addPlayer()">Add Player</button>
-          `;
-        } else {
-          html = `<h4>Edit Player</h4><p>(Implement your edit player logic here)</p>`;
-        }
-      } else if (currentType === "match") {
-        if (action === "add") {
-          html = `
-            <h4>Add Match Result</h4>
-            <input type="text" id="matchTitle" placeholder="Match Title" />
-            <input type="text" id="matchDate" placeholder="Date" />
-            <textarea id="matchSummary" placeholder="Match Summary"></textarea>
-            <textarea id="matchPlayers" placeholder="Player Stats: Name-Runs-Wickets,Name-Runs-Wickets"></textarea>
-            <button onclick="addMatchResult()">Add Match Result</button>
-          `;
-        } else {
-          html = `<h4>Edit Match Result</h4><p>(Implement your edit match logic here)</p>`;
-        }
-      } else if (currentType === "fixture") {
-        if (action === "add") {
-          html = `
-            <h4>Add Fixture</h4>
-            <input type="text" id="fixtureTitle" placeholder="Fixture Title" />
-            <input type="text" id="fixtureDate" placeholder="Date" />
-            <input type="text" id="fixtureVenue" placeholder="Venue" />
-            <button onclick="addFixture()">Add Fixture</button>
-          `;
-        } else {
-          html = `<h4>Edit Fixture</h4><p>(Implement your edit fixture logic here)</p>`;
-        }
-      }
-      document.getElementById("form-container").innerHTML = html;
-    }
-
-    // Simple placeholder implementations
-    function addPlayer() { alert("Player added (placeholder)."); }
-    function addMatchResult() { alert("Match result added (placeholder)."); }
-    function addFixture() { alert("Fixture added (placeholder)."); }
-
-    async function fetchResults() {
-      try {
-        const res = await fetch(`${API_BASE}/match`);
-        const matches = await res.json();
-        const resultsGrid = document.getElementById("results-grid");
-        resultsGrid.innerHTML = "";
-
-        matches.forEach(match => {
-          let playersHTML = "<h4>Player Stats:</h4>";
-          if (match.players) {
-            match.players.split(',').forEach(player => {
-              playersHTML += `<p>${player.trim()}</p>`;
-            });
-          }
-          resultsGrid.innerHTML += `
-            <div class="result-card">
-              <h4>${match.title}</h4>
-              <p>${match.date}</p>
-              <p>${match.summary}</p>
-              ${playersHTML}
-            </div>
-          `;
-        });
-      } catch (error) {
-        console.error('Error fetching results:', error);
-        document.getElementById("results-grid").innerHTML =
-          '<div class="result-card"><p>No results available at this time.</p></div>';
-      }
-    }
-
-    // Load results on page load
-    window.addEventListener('load', fetchResults);
   </script>
 </body>
 </html>
+
 
 
 
